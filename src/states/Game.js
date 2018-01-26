@@ -7,6 +7,8 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
+    this.game.scale.forceOrientation(true, false);
+
     const bannerText = 'Phaser + ES6 + Webpack'
     let banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText, {
       font: '40px Bangers',

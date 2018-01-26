@@ -1,0 +1,1 @@
+import Sprite from '../services/Sprite';export default class Ball extends Sprite {  constructor({ asset, x, y, frame, anchorX = 0, anchorY = 0, inputEnabled = true }) {    super({ asset, x, y, frame, anchorX, anchorY, inputEnabled});  }}

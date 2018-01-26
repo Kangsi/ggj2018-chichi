@@ -7,3 +7,9 @@ dist/
 *.log
 /index.html
 build/
+.idea/modules.xml
+.idea/GGJ2018.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/workspace.xml
+.idea/misc.xml
