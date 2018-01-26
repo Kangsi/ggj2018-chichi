@@ -52,7 +52,7 @@ export default class extends Phaser.State {
   }
   clickedPlay () {
     console.log('play');
-    game.state.start('TapToJoin');
+    game.state.start('Game');
   }
   clickedButton (image, id) {
     if (image.alpha > 0.5) {
