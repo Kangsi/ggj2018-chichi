@@ -1,5 +1,5 @@
-import Phaser from 'phaser'
-import { centerGameObjects } from '../utils'
+import Phaser from 'phaser';
+import { centerGameObjects } from '../utils';
 
 export default class extends Phaser.State {
   init () {}
@@ -17,6 +17,6 @@ export default class extends Phaser.State {
   }
 
   create () {
-    this.state.start('Game')
+    this.state.start('Game');
   }
 }
