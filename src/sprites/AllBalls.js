@@ -22,14 +22,16 @@ const positionList = [
 ]
 
 export default class AllBalls extends Phaser.Group {
-  constructor (game) {
+  constructor (game, image) {
     super(game)
     this.list = [];
+    this.image = image;
     this.ballCounter = 0;
     game.startCountDown.add(() => {
       this.createBalls();
     });
   }
+
 
   createBalls () {
     const delay = 100;
@@ -44,7 +46,7 @@ export default class AllBalls extends Phaser.Group {
 
       setTimeout(() => {
         const ball = new Ball({
-          asset: 'shoe',
+          asset: this.image,
           x: positionList[i].x,
           y: positionList[i].y,
           anchorX: 0.5,

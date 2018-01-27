@@ -11,7 +11,7 @@ export default class GameTimer extends Phaser.Group {
     this.game.startGameTimer.add(() => {
       setTimeout(() => {
         this.buildTimer();
-      }, 500)
+      }, 500);
     });
   }
   buildTimer () {

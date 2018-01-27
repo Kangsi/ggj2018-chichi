@@ -18,6 +18,8 @@ export default class extends Phaser.State {
     this.game.updateScore = new Phaser.Signal()
     this.game.saveScore = new Phaser.Signal();
     this.game.time.desiredFps = 60;
+
+    this.flaw = game.flaws.getFlaw();
   }
   preload () {}
 
@@ -36,11 +38,11 @@ export default class extends Phaser.State {
       }
     });
     this.createBG = new CreateBG(game);
-    this.allBalls = new AllBalls(game);
-    this.questions = new Questions(game, 'Placeholder?');
+    this.allBalls = new AllBalls(game, this.flaw.image);
+    this.questions = new Questions(game, this.flaw.question);
     this.countDown = new CountDown(game);
     this.gameTimer = new GameTimer(game, 5);
-    this.playersScore = new PlayersScore(game, 'shoe');
+    this.playersScore = new PlayersScore(game, this.flaw.image);
 
     this.game.endRound.add(() => {
       this.doEndRound();
