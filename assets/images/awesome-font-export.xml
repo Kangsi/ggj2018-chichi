@@ -1,20 +1,21 @@
 <font>
-	<info face="C:\Users\Kangsi\Documents\Git\GGJ2018\assets\images\awesome-font-export" size="80" />
-	<common lineHeight="80" scaleW="1883" scaleH="2047" pages="1" />
+	<info face="C:\Users\Kangsi\Desktop\awesome-font-export" size="80" />
+	<common lineHeight="80" scaleW="1030" scaleH="1024" pages="1" />
 	<pages>
-		<page id="0" file="C:\Users\Kangsi\Documents\Git\GGJ2018\assets\images\awesome-font-export.png" />
+		<page id="0" file="C:\Users\Kangsi\Desktop\awesome-font-export.png" />
 	</pages>
-	<chars count="12">
-		<char id="48" x="0" y="672" width="536" height="668" xoffset="0" yoffset="-587" xadvance="537" /><!-- 0 -->
-		<char id="49" x="1564" y="0" width="318" height="668" xoffset="0" yoffset="-589" xadvance="319" /><!-- 1 -->
-		<char id="50" x="1070" y="0" width="493" height="670" xoffset="0" yoffset="-590" xadvance="494" /><!-- 2 -->
-		<char id="51" x="1074" y="1376" width="492" height="669" xoffset="0" yoffset="-588" xadvance="493" /><!-- 3 -->
-		<char id="52" x="0" y="0" width="556" height="671" xoffset="0" yoffset="-590" xadvance="557" /><!-- 4 -->
-		<char id="53" x="557" y="0" width="512" height="670" xoffset="0" yoffset="-590" xadvance="513" /><!-- 5 -->
-		<char id="54" x="0" y="1341" width="535" height="705" xoffset="0" yoffset="-625" xadvance="536" /><!-- 6 -->
-		<char id="55" x="1074" y="671" width="493" height="704" xoffset="0" yoffset="-589" xadvance="494" /><!-- 7 -->
-		<char id="56" x="536" y="1379" width="493" height="667" xoffset="0" yoffset="-587" xadvance="494" /><!-- 8 -->
-		<char id="57" x="537" y="672" width="536" height="706" xoffset="0" yoffset="-625" xadvance="537" /><!-- 9 -->
+	<chars count="13">
+		<char id="48" x="0" y="605" width="268" height="334" xoffset="0" yoffset="-253" xadvance="269" /><!-- 0 -->
+		<char id="49" x="784" y="687" width="159" height="334" xoffset="0" yoffset="-254" xadvance="160" /><!-- 1 -->
+		<char id="50" x="781" y="0" width="246" height="334" xoffset="0" yoffset="-254" xadvance="247" /><!-- 2 -->
+		<char id="51" x="534" y="0" width="246" height="334" xoffset="0" yoffset="-253" xadvance="247" /><!-- 3 -->
+		<char id="52" x="0" y="0" width="277" height="335" xoffset="0" yoffset="-254" xadvance="278" /><!-- 4 -->
+		<char id="53" x="278" y="0" width="255" height="334" xoffset="0" yoffset="-254" xadvance="256" /><!-- 5 -->
+		<char id="54" x="537" y="668" width="246" height="355" xoffset="0" yoffset="-265" xadvance="247" /><!-- 6 -->
+		<char id="55" x="784" y="335" width="245" height="351" xoffset="0" yoffset="-253" xadvance="246" /><!-- 7 -->
+		<char id="56" x="537" y="335" width="246" height="332" xoffset="0" yoffset="-252" xadvance="247" /><!-- 8 -->
+		<char id="57" x="269" y="605" width="267" height="353" xoffset="0" yoffset="-272" xadvance="268" /><!-- 9 -->
+		<char id="35" x="0" y="336" width="274" height="268" xoffset="0" yoffset="-222" xadvance="275" /><!-- # -->
 		<char id="32" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="20" /><!--   -->
 		<char id="9" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="160" /><!-- 	 -->
 	</chars>
