@@ -8,7 +8,6 @@ let seconds = 3;
 export default class Questions extends Phaser.Group {
   constructor (game) {
     super(game);
-
     this.game = game;
 
     this.game.startCountDown.add(() => {
