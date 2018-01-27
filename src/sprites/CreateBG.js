@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 export default class CreateBG extends Phaser.Group {
-  constructor (game) {
+  constructor(game) {
     super(game);
     this.game = game;
 
@@ -9,37 +9,21 @@ export default class CreateBG extends Phaser.Group {
 
     bg.width = this.game.width;
     bg.height = this.game.height;
-    // const player1Active = this.game.add.sprite(0, 0, 'bluePlayer');
-    // const player2Active = this.game.add.sprite(this.game.width / 2, 0, 'orangePlayer');
-    // const player3Active = this.game.add.sprite(0, this.game.height / 2, 'yellowPlayer');
-    // const player4Active = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'greenPlayer');
-    // const background = [
-    //   player1Active,
-    //   player2Active,
-    //   player3Active,
-    //   player4Active
-    // ];
 
-    const player1 = this.game.add.sprite(0, 0, 'player-button2');
-    const player2 = this.game.add.sprite(this.game.width / 2, 0, 'player-button2');
-    const player3 = this.game.add.sprite(0, this.game.height / 2, 'player-button2');
-    const player4 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'player-button2');
+    const player1 = this.game.add.sprite(0, 0, 'player-button');
+    const player2 = this.game.add.sprite(this.game.width / 2, 0, 'player-button');
+    const player3 = this.game.add.sprite(0, this.game.height / 2, 'player-button');
+    const player4 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'player-button');
     const buttons = [
       player1,
       player2,
       player3,
       player4
     ];
-    console.log(this.game.players);
     for (let i = 0; i < buttons.length; i += 1) {
-      // background[i].width = game.width / 2;
-      // background[i].height = game.height / 2;
-      // background[i].visible = true;
       buttons[i].width = game.width / 2;
       buttons[i].height = game.height / 2;
-
-      if(this.game.players[i] == true){
-        console.log(this.game.players[i]);
+      if (this.game.players[i].active) {
         buttons[i].visible = false;
       }
     }

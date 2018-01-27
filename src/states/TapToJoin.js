@@ -1,14 +1,13 @@
 /* globals __DEV__ */
 import Phaser from 'phaser';
+import Player from '../services/Player';
 
 export default class extends Phaser.State {
   init () {
-    game.players = [
-      false,  //topleft
-      false,  //topright
-      false,  //botleft
-      false   //botright
-    ];
+    game.players = []
+    for (let i = 0; i < 4; i += 1) {
+      game.players.push(new Player(i));
+    }
     this.canStart = false;
   }
 
@@ -37,16 +36,16 @@ export default class extends Phaser.State {
   }
   clickedButton (image, id) {
     if (image.alpha > 0.5) {
-      game.players[id] = true;
+      game.players[id].setActive();
       image.alpha = 0.01;
     } else {
       image.alpha = 1;
-      game.players[id] = false;
+      game.players[id].setActive(false);
     }
 
     let amountOfPlayers = 0;
     for (let i = 0; i < game.players.length; i += 1) {
-      if (game.players[i] === true) {
+      if (game.players[i].active) {
         amountOfPlayers += 1;
       }
       if (amountOfPlayers > 2) {

@@ -63,8 +63,7 @@ export default class Ball extends Sprite {
     const tween = this.game.add.tween(this.scale).to({ x: 0, y: 0}, 400, Phaser.Easing.Back.InOut, true);
     tween.onComplete.add(() => {
       game.playerScore[playerID] += 1;
-      console.log(game.playerScore);
-
+      game.updateScore.dispatch(playerID);
     })
   }
 }

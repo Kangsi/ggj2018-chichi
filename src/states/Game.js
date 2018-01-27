@@ -4,6 +4,7 @@ import AllBalls from '../sprites/AllBalls';
 import Questions from '../sprites/Questions';
 import CountDown from '../sprites/CountDown';
 import GameTimer from '../sprites/GameTimer';
+import PlayersScore from '../sprites/PlayersScore';
 import CreateBG from '../sprites/CreateBG';
 
 export default class extends Phaser.State {
@@ -14,6 +15,8 @@ export default class extends Phaser.State {
     this.game.playerScore = [ 0, 0, 0, 0 ];
     this.game.startGameTimer = new Phaser.Signal();
     this.game.endRound = new Phaser.Signal();
+    this.game.updateScore = new Phaser.Signal()
+    this.game.saveScore = new Phaser.Signal();
   }
   preload () {}
 
@@ -35,6 +38,7 @@ export default class extends Phaser.State {
     this.questions = new Questions(game, 'Placeholder?');
     this.countDown = new CountDown(game);
     this.gameTimer = new GameTimer(game, 5);
+    this.playersScore = new PlayersScore(game, 'shoe');
     this.game.endRound.add(() => {
       this.doEndRound();
     });
