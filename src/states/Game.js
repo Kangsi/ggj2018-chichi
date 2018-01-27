@@ -4,6 +4,7 @@ import AllBalls from '../sprites/AllBalls';
 import Questions from '../sprites/Questions';
 import CountDown from '../sprites/CountDown';
 import GameTimer from '../sprites/GameTimer';
+import CreateBG from '../sprites/CreateBG';
 
 export default class extends Phaser.State {
   init () {
@@ -21,6 +22,7 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
+    this.createBG = new CreateBG(game);
     this.allBalls = new AllBalls(game);
     this.questions = new Questions(game, 'Placeholder?');
     this.countDown = new CountDown(game);
