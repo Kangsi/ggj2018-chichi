@@ -20,8 +20,22 @@ export default class extends Phaser.State {
     this.load.image('shoe', 'assets/images/shoe.png');
     this.load.image('mushroom', 'assets/images/mushroom2.png');
     this.load.image('bg', 'assets/images/bg.png');
+
+    this.load.image('bluePlayer', 'assets/images/blue-player-bg.png');
+    this.load.image('orangePlayer', 'assets/images/orange-player-bg.png');
+    this.load.image('yellowPlayer', 'assets/images/yellow-player-bg.png');
+    this.load.image('greenPlayer', 'assets/images/green-player-bg.png');
+
+    this.load.image('blue-player-bg-rays', 'assets/images/blue-player-bg-rays.png');
+    this.load.image('orange-player-bg-rays', 'assets/images/orange-player-bg-rays.png');
+    this.load.image('yellow-player-bg-rays', 'assets/images/yellow-player-bg-rays.png');
+    this.load.image('green-player-bg-rays', 'assets/images/green-player-bg-rays.png');
+
     this.load.image('player-button', 'assets/images/player-button.png');
     this.load.image('play-button', 'assets/images/play-button.png');
+    this.load.image('player-button2', 'assets/images/player-button2.png');
+    this.load.image('play-buttonbg', 'assets/images/play-buttonbg.png');
+
   }
 
   create () {
