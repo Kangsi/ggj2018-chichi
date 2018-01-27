@@ -10,7 +10,9 @@ export default class PlayerEndScore extends Phaser.Group {
     this.info = info;
 
     this.buildBalls();
-    this.buildText(placement, id);
+    setTimeout(() => {
+      this.buildText(placement, id);
+    }, 400);
   }
 
   getPlacement (placement) {
@@ -28,7 +30,7 @@ export default class PlayerEndScore extends Phaser.Group {
 
   buildText(placement, id) {
     this.timer = new Phaser.BitmapText(game, game.width / 4 - 100, game.height / 4 + 80, 'awesome-font', this.getPlacement(placement));
-    this.timer.scale.setTo(2);
+    this.timer.scale.setTo(20);
     this.timer.anchor.setTo(0.5, 0.5);
     switch (id) {
       case 0:
@@ -49,6 +51,7 @@ export default class PlayerEndScore extends Phaser.Group {
         break;
     }
 
+    game.add.tween(this.timer.scale).to({ x: 2, y: 2 }, 200, null, true)
     this.add(this.timer);
   }
 
@@ -71,6 +74,8 @@ export default class PlayerEndScore extends Phaser.Group {
   }
 
   update() {
-    this.bringToTop(this.timer);
+    if (this.timer) {
+      this.bringToTop(this.timer);
+    }
   }
 }
