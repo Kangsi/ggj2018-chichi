@@ -2,8 +2,8 @@ export default class Player {
   constructor (id) {
     this.id = id;
     this.active = false;
-    this.scoreList = [];
-    this.itemList = [];
+    this.itemList = []; //image key
+    this.scoreList = []; //amount of items collected
   }
 
   addScore (score, item) {
