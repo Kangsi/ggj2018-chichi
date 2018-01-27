@@ -21,8 +21,7 @@ export default class Questions extends Phaser.Group {
     const waiting = this.game.add.tween(this.timer.scale).to({ x: 1, y: 1 }, 500, Phaser.Easing.Quintic.In, false, 0);
     this.tween.chain(waiting)
     waiting.onComplete.add(() => {
-      this.timer.scale.setTo(0);
-      this.timer2.scale.setTo(0);
+
       this.setTime();
     });
 
@@ -43,13 +42,14 @@ export default class Questions extends Phaser.Group {
 
   setTime () {
     this.seconds -= 1;
-    this.timer.text = this.seconds > 0 ? this.seconds : 'Start!';
-    this.timer2.text = this.seconds > 0 ? this.seconds : 'Start!';
+    this.timer.text = this.seconds > 0 ? this.seconds : 'g';
+    this.timer2.text = this.seconds > 0 ? this.seconds : 'g';
 
     if (this.seconds < 0) {
       return;
     }
-
+    this.timer.scale.setTo(0);
+    this.timer2.scale.setTo(0);
 
     this.tween.start();
     this.tween2.start();

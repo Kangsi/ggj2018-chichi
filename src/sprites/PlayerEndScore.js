@@ -13,8 +13,21 @@ export default class PlayerEndScore extends Phaser.Group {
     this.buildText(placement, id);
   }
 
+  getPlacement (placement) {
+    switch (placement) {
+      case 1:
+        return 'e';
+      case 2:
+        return 't';
+      case 3:
+        return 'd';
+      case 4:
+        return 'v';
+    }
+  }
+
   buildText(placement, id) {
-    this.timer = new Phaser.BitmapText(game, game.width / 4 - 100, game.height / 4 + 80, 'awesome-font', `#${placement}`);
+    this.timer = new Phaser.BitmapText(game, game.width / 4 - 100, game.height / 4 + 80, 'awesome-font', this.getPlacement(placement));
     this.timer.scale.setTo(2);
     this.timer.anchor.setTo(0.5, 0.5);
     switch (id) {
