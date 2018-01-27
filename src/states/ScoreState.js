@@ -3,6 +3,7 @@ import Player from '../services/Player';
 import CreateBG from '../sprites/CreateBG';
 import PlayerEndScore from '../sprites/PlayerEndScore';
 import Config from '../config';
+import Curtain from '../sprites/Curtain';
 
 const position = [
   { x: 0, y: 0 },
@@ -52,10 +53,11 @@ export default class extends Phaser.State {
 
     setTimeout(() => {
       this.game.showNextPerson.dispatch();
-    }, 2000);
+    }, 4000);
   }
 
-  create() {
+
+  create () {
     this.createBG = new CreateBG(game);
     this.cross = this.game.add.sprite(0, 0, 'cross');
     this.cross.width = game.width;
@@ -63,6 +65,8 @@ export default class extends Phaser.State {
 
 
     this.game.showPlacement.dispatch();
+
+    this.curtain = new Curtain(game, false);
   }
 
   update() {}
