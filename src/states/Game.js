@@ -5,6 +5,7 @@ import Questions from '../sprites/Questions';
 import CountDown from '../sprites/CountDown';
 import GameTimer from '../sprites/GameTimer';
 import PlayersScore from '../sprites/PlayersScore';
+import CreateBG from '../sprites/CreateBG';
 
 export default class extends Phaser.State {
   init () {
@@ -31,7 +32,7 @@ export default class extends Phaser.State {
         this.pointers.splice(index, 1);
       }
     });
-
+    this.createBG = new CreateBG(game);
     this.allBalls = new AllBalls(game);
     this.questions = new Questions(game, 'Placeholder?');
     this.countDown = new CountDown(game);
