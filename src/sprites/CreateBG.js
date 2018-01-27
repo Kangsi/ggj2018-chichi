@@ -10,10 +10,10 @@ export default class CreateBG extends Phaser.Group {
     bg.width = this.game.width;
     bg.height = this.game.height;
 
-    const player1 = this.game.add.sprite(0, 0, 'player-button');
-    const player2 = this.game.add.sprite(this.game.width / 2, 0, 'player-button');
-    const player3 = this.game.add.sprite(0, this.game.height / 2, 'player-button');
-    const player4 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'player-button');
+    const player1 = this.game.add.sprite(0, 0, 'player-button2');
+    const player2 = this.game.add.sprite(this.game.width / 2, 0, 'player-button2');
+    const player3 = this.game.add.sprite(0, this.game.height / 2, 'player-button2');
+    const player4 = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'player-button2');
     const buttons = [
       player1,
       player2,
