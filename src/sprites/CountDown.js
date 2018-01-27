@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 export default class Questions extends Phaser.Group {
   constructor (game) {
     super(game);
-    this.seconds = 1;
+    this.seconds = 3;
     this.game = game;
 
     this.game.startCountDown.add(() => {

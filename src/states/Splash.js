@@ -39,11 +39,13 @@ export default class extends Phaser.State {
     this.load.image('green-player-bg-rays', 'assets/images/green-player-bg-rays.png');
 
     this.load.image('player-button', 'assets/images/player-button.png');
+    this.load.image('player-button-mirror', 'assets/images/player-button-mirror.png');
     this.load.image('play-button', 'assets/images/play-button.png');
     this.load.bitmapFont('awesome-font', 'assets/images/awesome-font-export.png', 'assets/images/awesome-font-export.xml');
     this.load.image('player-button2', 'assets/images/player-button2.png');
     this.load.image('play-buttonbg', 'assets/images/play-buttonbg.png');
     this.load.image('cross', 'assets/images/cross.png');
+    this.load.image('star', 'assets/images/star.png');
   }
 
   create () {

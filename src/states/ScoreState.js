@@ -34,7 +34,6 @@ export default class extends Phaser.State {
   }
 
   buildScore (player) {
-
   }
 
   preload () {
@@ -53,6 +52,7 @@ export default class extends Phaser.State {
         }
         setTimeout(() => {
           this.game.showPlacement.dispatch();
+
         });
       }, 3000);
     });
