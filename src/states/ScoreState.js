@@ -53,7 +53,7 @@ export default class extends Phaser.State {
 
     setTimeout(() => {
       this.game.showNextPerson.dispatch();
-    }, 4000);
+    }, 3500);
   }
 
 

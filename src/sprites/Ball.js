@@ -61,6 +61,14 @@ export default class Ball extends Sprite {
 
   disappearAnimation (playerID) {
     const tween = this.game.add.tween(this.scale).to({ x: 0, y: 0}, 400, Phaser.Easing.Back.InOut, true);
+    const plop = game.add.sprite(this.x, this.y, 'plop');
+    console.log(this.x);
+    plop.scale.setTo(0.01);
+    plop.anchor.setTo(0.5, 0.5);
+    const plopTween = this.game.add.tween(plop.scale).to({x: 1, y: 1}, 100);
+    const plopTween2 = this.game.add.tween(plop).to({alpha: 0}, 100);
+
+    tween.chain(plopTween, plopTween2);
     tween.onComplete.add(() => {
       game.playerScore[playerID] += 1;
       game.updateScore.dispatch(playerID);
