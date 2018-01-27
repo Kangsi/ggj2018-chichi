@@ -15,14 +15,8 @@ export default class GameTimer extends Phaser.Group {
     });
   }
   buildTimer () {
-    this.timer = new Text({
-      text: this.time,
-      x: game.width / 2,
-      y: game.height / 2,
-      anchorX: 0.5,
-      anchorY: 0.5,
-      fontSize: 150
-    });
+    this.timer = new Phaser.BitmapText(game, game.width / 2, game.height / 2 + 80, 'awesome-font', this.time)
+    this.timer.anchor.setTo(0.5)
 
     this.add(this.timer);
     this.tween = this.game.add.tween(this.timer.scale).to({}, 500, Phaser.Easing.Quintic.In, true, 0);

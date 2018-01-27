@@ -22,7 +22,10 @@ export default class extends Phaser.State {
     this.load.image('bg', 'assets/images/bg.png');
     this.load.image('player-button', 'assets/images/player-button.png');
     this.load.image('play-button', 'assets/images/play-button.png');
+    this.load.bitmapFont('awesome-font', 'assets/images/awesome-font-export.png', 'assets/images/awesome-font-export.xml');
+
   }
+
 
   create () {
     this.state.start('TapToJoin');

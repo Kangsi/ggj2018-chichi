@@ -15,16 +15,10 @@ export default class Questions extends Phaser.Group {
 
     this.buildOverlay();
   }
-
   buildTimer () {
-    this.timer = new Text({
-      text: this.seconds,
-      x: Config.width / 2,
-      y: Config.height / 2,
-      anchorX: 0.5,
-      anchorY: 0.5,
-      fontSize: 90
-    });
+    this.timer = new Phaser.BitmapText(game, game.width / 2, game.height / 2 + 80, 'awesome-font', this.seconds.toString());
+    this.timer.anchor.setTo(0.5, 0.5);
+
 
     this.timer.scale.setTo(0);
     this.add(this.timer);

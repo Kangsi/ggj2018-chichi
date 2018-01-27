@@ -17,10 +17,12 @@ export default class extends Phaser.State {
     this.game.endRound = new Phaser.Signal();
     this.game.updateScore = new Phaser.Signal()
     this.game.saveScore = new Phaser.Signal();
+    this.game.time.desiredFps = 60;
   }
   preload () {}
 
   create () {
+
     this.game.input.onDown.add((pointer) => {
       this.pointers.push(pointer);
       this.checkInput();
@@ -39,6 +41,7 @@ export default class extends Phaser.State {
     this.countDown = new CountDown(game);
     this.gameTimer = new GameTimer(game, 5);
     this.playersScore = new PlayersScore(game, 'shoe');
+
     this.game.endRound.add(() => {
       this.doEndRound();
     });
@@ -47,11 +50,12 @@ export default class extends Phaser.State {
   doEndRound () {
     setTimeout(() => {
       this.allBalls.removeAllBalls();
-    }, 3000);
+    }, 1000);
   }
-
+  
   render () {
     if (__DEV__) {
+      this.game.debug.text(game.time.fps, 25, 25, '#00ff00')
     }
   }
 
