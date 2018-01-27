@@ -56,18 +56,22 @@ export default class extends Phaser.State {
   }
   toggleAudio (id) {
     if (game.players[id].active) {
+      let amount = 0.5;
+      if (game.players[3].active) {
+        amount = 1;
+      }
       switch (id) {
         case 0:
           console.log('play');
-          this.sounds[id].volume = 0.5;
+          this.sounds[id].volume = amount;
           break;
         case 1:
           console.log('play');
-          this.sounds[id].volume = 0.5;
+          this.sounds[id].volume = amount;
           break;
         case 2:
           console.log('play');
-          this.sounds[id].volume = 0.5;
+          this.sounds[id].volume = amount;
           break;
         case 3:
           console.log('play');
@@ -97,7 +101,7 @@ export default class extends Phaser.State {
           break;
         case 3:
           console.log('play');
-          for(let i = 0; i<  this.sounds.length; i+=1){
+          for(let i = 0; i <  this.sounds.length; i += 1){
             if (this.sounds[i].volume > 0) {
               this.sounds[i].volume = 0.5;
             }
