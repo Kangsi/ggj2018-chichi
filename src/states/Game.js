@@ -6,6 +6,7 @@ import CountDown from '../sprites/CountDown';
 import GameTimer from '../sprites/GameTimer';
 import PlayersScore from '../sprites/PlayersScore';
 import CreateBG from '../sprites/CreateBG';
+import Overlay from '../services/Overlay';
 
 export default class extends Phaser.State {
   init () {
@@ -17,6 +18,7 @@ export default class extends Phaser.State {
     this.game.endRound = new Phaser.Signal();
     this.game.updateScore = new Phaser.Signal()
     this.game.saveScore = new Phaser.Signal();
+    this.game.toggleOverlay = new Phaser.Signal();
     this.game.time.desiredFps = 60;
 
     this.flaw = game.flaws.getFlaw();
@@ -38,11 +40,20 @@ export default class extends Phaser.State {
       }
     });
     this.createBG = new CreateBG(game);
+    this.gameTimer = new GameTimer(game, 5);
     this.allBalls = new AllBalls(game, this.flaw.image);
     this.questions = new Questions(game, this.flaw.question);
     this.countDown = new CountDown(game);
-    this.gameTimer = new GameTimer(game, 5);
+
+
     this.playersScore = new PlayersScore(game, this.flaw.image);
+
+    this.overlay = new Overlay({ alpha: 0.5});
+    game.add.existing(this.overlay)
+
+    this.game.toggleOverlay.add((visible) => {
+      this.overlay.visible = visible;
+    });
 
     this.game.endRound.add(() => {
       this.doEndRound();

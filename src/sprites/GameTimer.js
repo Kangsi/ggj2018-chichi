@@ -1,13 +1,10 @@
 import Phaser from 'phaser';
-import Text from '../services/Text';
-import Overlay from '../services/Overlay';
 
 export default class GameTimer extends Phaser.Group {
   constructor (game, time) {
     super(game);
     this.time = time;
     this.game = game;
-    this.buildOverlay();
     this.game.startGameTimer.add(() => {
       setTimeout(() => {
         this.buildTimer();
@@ -43,15 +40,7 @@ export default class GameTimer extends Phaser.Group {
         this.timer.visible = false;
         game.endRound.dispatch();
       }, 2000);
-      this.overlay.visible = true;
+      this.game.toggleOverlay.dispatch(true);
     }
-  }
-
-  buildOverlay () {
-    this.overlay = new Overlay({
-      alpha: 0
-    });
-    this.overlay.visible = false;
-    this.add(this.overlay);
   }
 }

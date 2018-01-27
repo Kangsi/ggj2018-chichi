@@ -45,6 +45,8 @@ export default class PlayersScore extends Phaser.Group {
       text.angle = transformList[i].angle;
       text.visible = false;
       this.textList[i] = text;
+      text.stroke = '#fff';
+      text.strokeThickness = 16;
       this.add(text);
     }
   }

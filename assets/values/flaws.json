@@ -2,7 +2,7 @@
   "flaws": [
     { "question": "Who has the ugliest shoes?", "image": "shoe" },
     { "question": "Who has yellow teeth?", "image": "smile" },
-    { "question": "Who is hangry?", "image": "hangry" },
+    { "question": "Who is always hangry?", "image": "hangry" },
     { "question": "Who has the longest nose?", "image": "nose" },
     { "question": "Question 5", "image": "shoe" }
   ]

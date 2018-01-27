@@ -15,10 +15,22 @@
             margin: 0;
             padding: 0;
         }
+
+        @font-face {
+            font-family: 'Japanese';
+            src: url('assets/fonts/Japanese.ttf') format('truetype')
+        }
+
+        .fontPreload1 {
+            font-family: Japanese;
+            position:absolute;
+            left:-100px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="fontPreload1">.</div>
 
     <div id="content"></div>
     <!-- uncomment the line bellow for cordova feature -->

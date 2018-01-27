@@ -1,7 +1,4 @@
 import Phaser from 'phaser';
-import Text from '../services/Text';
-import Overlay from '../services/Overlay';
-import Config from '../config';
 
 export default class Questions extends Phaser.Group {
   constructor (game) {
@@ -12,8 +9,6 @@ export default class Questions extends Phaser.Group {
     this.game.startCountDown.add(() => {
       this.buildTimer();
     });
-
-    this.buildOverlay();
   }
   buildTimer () {
     this.timer = new Phaser.BitmapText(game, game.width / 2, game.height / 2 + 80, 'awesome-font', this.seconds.toString());
@@ -46,15 +41,7 @@ export default class Questions extends Phaser.Group {
         this.timer.visible = false;
         this.game.startGameTimer.dispatch();
       }, 2000);
-      this.overlay.visible = false;
+      this.game.toggleOverlay.dispatch(false);
     }
-  }
-
-  buildOverlay () {
-    this.overlay = new Overlay({
-      alpha: 0
-    });
-
-    this.add(this.overlay);
   }
 }
