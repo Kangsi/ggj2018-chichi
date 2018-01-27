@@ -159,8 +159,13 @@ export default class AllBalls extends Phaser.Group {
     if (this.ballCounter === this.list.length) {
       setTimeout(() => {
         this.game.saveScore.dispatch();
-        console.log(game.players)
-        this.game.state.start('Game');
+        if (game.flaws.step === 4) {
+          this.game.state.start('ScoreState');
+        }
+
+        else {
+          this.game.state.start('Game');
+        }
       }, 2000);
     }
   }

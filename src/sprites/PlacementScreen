@@ -1,0 +1,27 @@
+import Phaser from 'phaser';
+import Sprite from '../services/Sprite';
+
+export default class PlacementScreen extends Phaser.Group {
+  constructor(game, id, x = 0, y = 0) {
+    super(game);
+
+    console.log(x,y)
+    this.id = id;
+
+    this.x = x;
+    this.y = y;
+
+    this.buildText();
+  }
+
+  buildText () {
+    const text = new Phaser.BitmapText(game, 0, 0, 'awesome-font', this.step)
+
+    text.anchor.setTo(0.5);
+    this.add(text);
+    setTimeout(() => {
+      game.showNextPerson.dispatch();
+    }, 1000);
+  }
+
+}

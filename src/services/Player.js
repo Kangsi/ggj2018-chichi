@@ -14,4 +14,8 @@ export default class Player {
   setActive (active = true) {
     this.active = active;
   }
+
+  finalScore () {
+    return this.scoreList.reduce((a, b) => a + b, 0);
+  }
 }

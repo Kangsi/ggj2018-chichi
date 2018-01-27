@@ -11,7 +11,6 @@ export default class Flaws {
   addInfo (question, image) {
     this.questionsList.push(question);
     this.imageList.push(image);
-    console.log(this.questionsList, this.imageList);
   }
 
   getFlaw () {
