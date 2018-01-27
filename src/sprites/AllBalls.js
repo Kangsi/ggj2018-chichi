@@ -35,7 +35,7 @@ export default class AllBalls extends Phaser.Group {
     const delay = 100;
     let currentPlayerIndex = 0.05;
     for (let i = 0; i < positionList.length; i += 1) {
-      if (!game.players[Math.floor(currentPlayerIndex)]) {
+      if (!game.players[Math.floor(currentPlayerIndex)].active) {
         currentPlayerIndex += 1 / (positionList.length / 4);
         continue;
       }
@@ -109,14 +109,16 @@ export default class AllBalls extends Phaser.Group {
     this.ballCounter += 1;
 
     if (this.ballCounter === this.list.length) {
-      console.log("testing")
       setTimeout(() => {
+        this.game.saveScore.dispatch();
+        console.log(game.players)
+
         this.game.state.start('Game');
       }, 2000);
     }
   }
 
-  render() {
+  render () {
     for (let i = 0; i < this.list.length; i += 1) {
       this.list[i].render();
     }

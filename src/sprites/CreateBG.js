@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 export default class CreateBG extends Phaser.Group {
-  constructor (game) {
+  constructor(game) {
     super(game);
     this.game = game;
 
@@ -20,12 +20,10 @@ export default class CreateBG extends Phaser.Group {
       player3,
       player4
     ];
-    console.log(this.game.players);
     for (let i = 0; i < buttons.length; i += 1) {
       buttons[i].width = game.width / 2;
       buttons[i].height = game.height / 2;
-      if(this.game.players[i] == true){
-        console.log(this.game.players[i]);
+      if (this.game.players[i].active) {
         buttons[i].visible = false;
       }
     }

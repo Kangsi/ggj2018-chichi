@@ -10,22 +10,26 @@ const transformList = [
 ];
 
 export default class PlayersScore extends Phaser.Group {
-  constructor (game) {
+  constructor (game, imageKey) {
     super(game);
 
     this.game = game;
     this.textList = [];
+    this.imageKey = imageKey;
     this.buildTextScore();
 
     this.game.updateScore.add((id) => {
       this.changeText(id);
     });
+
+    this.game.saveScore.add((id) => {
+      this.saveScore(id);
+    });
   }
 
   buildTextScore () {
     for (let i = 0; i < game.players.length; i += 1) {
-      if (!game.players[i]) {
-        console.log("removed score")
+      if (!game.players[i].active) {
         continue;
       }
       const text = new Text({
@@ -52,5 +56,12 @@ export default class PlayersScore extends Phaser.Group {
     }
     this.textList[id].text = game.playerScore[id];
     this.textList[id].visible = true;
+  }
+
+  saveScore () {
+    console.log(game.playerScore)
+    for (let i = 0; i < game.players.length; i += 1) {
+      game.players[i].addScore(game.playerScore[i], this.imageKey);
+    }
   }
 }
