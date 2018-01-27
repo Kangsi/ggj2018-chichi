@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import Sprite from '../services/Sprite';
 
-const dragCoefficient = 6000;
+const dragCoefficient = 4000;
 const amplitude = 20;
 
 export default class Ball extends Sprite {
@@ -10,7 +10,9 @@ export default class Ball extends Sprite {
 
     game.physics.arcade.enable(this);
     this.body.collideWorldBounds = true;
-    this.body.bounce.set(0.9);
+    this.body.angularDrag = 200;
+    this.body.allowRotation = true;
+    this.body.bounce.set(0.5);
     this.body.setCircle(this.width / 2);
     this.body.drag = new Phaser.Point(4000, 4000)
     this.inputEnabled = true;
@@ -20,7 +22,10 @@ export default class Ball extends Sprite {
       {x: 0, y: 0}
     ];
 
-    this.angle = Math.random() * 360;
+
+
+
+    this.angle = Phaser.Point.angle(this.position, new Phaser.Point(game.width / 2, game.height / 2)) * 180 / Math.PI - 90;
 
     this.events.onDragStop.add(this.stopDrag.bind(this));
     this.scale.setTo(0);
@@ -32,6 +37,10 @@ export default class Ball extends Sprite {
     this.positionArray.push({ x: this.x, y: this.y });
 
     this.body.drag = this.calculateVelocityAbsolute().normalize().multiply(dragCoefficient, dragCoefficient);
+
+    if (this.body.onWall() || this.body.onFloor()) {
+      this.body.angularVelocity = (Math.random() - 0.5) * 500;
+    }
   }
 
   stopDrag () {
@@ -48,5 +57,14 @@ export default class Ball extends Sprite {
 
   render () {
     game.debug.body(this);
+  }
+
+  disappearAnimation (playerID) {
+    const tween = this.game.add.tween(this.scale).to({ x: 0, y: 0}, 400, Phaser.Easing.Back.InOut, true);
+    tween.onComplete.add(() => {
+      game.playerScore[playerID] += 1;
+      console.log(game.playerScore);
+
+    })
   }
 }
