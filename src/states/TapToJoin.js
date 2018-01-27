@@ -2,11 +2,11 @@
 import Phaser from 'phaser';
 import Player from '../services/Player';
 import Flaws from '../services/Flaws';
-import ParticleSystem from '../sprites/ParticleSystem'
+import ParticleSystem from '../sprites/ParticleSystem';
 
 export default class extends Phaser.State {
   init () {
-    game.players = []
+    game.players = [];
     for (let i = 0; i < 4; i += 1) {
       game.players.push(new Player(i));
     }
@@ -36,11 +36,77 @@ export default class extends Phaser.State {
 
     // playButtons
     this.createPlayButton();
+    this.createAudio();
   }
   update () {
   }
   clickedPlay () {
     game.state.start('Game');
+  }
+  createAudio () {
+    this.bass = game.add.audio('drum');
+    this.guitar = game.add.audio('guitar');
+    this.melody = game.add.audio('melody');
+    this.sounds = [this.bass, this.guitar, this.melody];
+    for (let i = 0; i < this.sounds.length; i += 1) {
+      this.sounds[i].volume = 0;
+      this.sounds[i].loop = true;
+      this.sounds[i].play();
+    }
+  }
+  toggleAudio (id) {
+    if (game.players[id].active) {
+      switch (id) {
+        case 0:
+          console.log('play');
+          this.sounds[id].volume = 0.5;
+          break;
+        case 1:
+          console.log('play');
+          this.sounds[id].volume = 0.5;
+          break;
+        case 2:
+          console.log('play');
+          this.sounds[id].volume = 0.5;
+          break;
+        case 3:
+          console.log('play');
+          for(let i = 0; i <  this.sounds.length; i += 1){
+            if(this.sounds[i].volume > 0){
+              this.sounds[i].volume = 1;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    if (!game.players[id].active) {
+      switch (id) {
+        case 0:
+          console.log('stop');
+          this.sounds[id].volume = 0;
+          break;
+        case 1:
+          console.log('play');
+          this.sounds[id].volume = 0;
+          break;
+        case 2:
+          console.log('play');
+          this.sounds[id].volume = 0;
+          break;
+        case 3:
+          console.log('play');
+          for(let i = 0; i<  this.sounds.length; i+=1){
+            if (this.sounds[i].volume > 0) {
+              this.sounds[i].volume = 0.5;
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    }
   }
   clickedButton (image, id) {
     if (image.alpha > 0.5) {
@@ -50,7 +116,6 @@ export default class extends Phaser.State {
       image.alpha = 1;
       game.players[id].setActive(false);
     }
-
     let amountOfPlayers = 0;
     for (let i = 0; i < game.players.length; i += 1) {
       if (game.players[i].active) {
@@ -59,8 +124,8 @@ export default class extends Phaser.State {
     }
     if (amountOfPlayers > 2) {
       this.canStart = true;
-      if(amountOfPlayers === 3 ){
-        if(this.playButton.alpha !== 1){
+      if (amountOfPlayers === 3) {
+        if (this.playButton.alpha !== 1) {
           this.starParticles.createEmitter(this.playButton.x, this.playButton.y);
           game.world.bringToTop(this.playButton);
         }
@@ -74,8 +139,9 @@ export default class extends Phaser.State {
       this.playButton.inputEnabled = false;
       this.starParticles.destroyEmitter();
     }
+    this.toggleAudio(id);
   }
-  createBGs(){
+  createBGs () {
     const bg = game.add.sprite(0, 0, 'bg');
 
     bg.width = game.width;
@@ -101,10 +167,10 @@ export default class extends Phaser.State {
     const player2ray = game.add.sprite(game.width / 2, game.height / 2, 'blue-player-bg-rays');
     const player3ray = game.add.sprite(game.width / 2, game.height / 2, 'green-player-bg-rays');
     const player4ray = game.add.sprite(game.width / 2, game.height / 2, 'orange-player-bg-rays');
-    player1ray.anchor.setTo(1,1);
-    player2ray.anchor.setTo(0,1);
-    player3ray.anchor.setTo(1,0);
-    player4ray.anchor.setTo(0,0);
+    player1ray.anchor.setTo(1, 1);
+    player2ray.anchor.setTo(0, 1);
+    player3ray.anchor.setTo(1, 0);
+    player4ray.anchor.setTo(0, 0);
     this.p1tween1 = this.game.add.tween(player1ray).to({rotation: rotation}, animationSpeed);
     this.p1tween2 = this.game.add.tween(player1ray).to({rotation: -rotation}, animationSpeed);
     this.p1tween1.start();
@@ -188,7 +254,7 @@ export default class extends Phaser.State {
       if (i < 2) {
         this.buttons[i].width = -(game.width / 2);
         this.buttons[i].height = -(game.height / 2);
-      }else{
+      } else {
         this.buttons[i].width = (game.width / 2);
         this.buttons[i].height = (game.height / 2);
       }
@@ -196,6 +262,7 @@ export default class extends Phaser.State {
       this.buttons[i].events.onInputDown.add(() => { this.clickedButton(this.buttons[i], i); });
     }
   }
+
   render () {
 
   }
