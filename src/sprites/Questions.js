@@ -7,6 +7,9 @@ const duration = 750;
 export default class Questions extends Phaser.Group {
   constructor (game, question) {
     super(game);
+    this.scale.setTo(0)
+    this.x = Config.width / 2;
+    this.y = Config.height / 2;
 
     this.game = game;
     this.buildQuestionBG();
@@ -20,8 +23,8 @@ export default class Questions extends Phaser.Group {
   buildQuestion (question) {
     this.question1 = new Text({
       text: question,
-      x: Config.width / 2,
-      y: Config.height * 7 / 12,
+      x: 0,
+      y: Config.height * 1 / 12,
       anchorX: 0.5,
       anchorY: 0.5,
       fontWeight: 'bold',
@@ -29,9 +32,10 @@ export default class Questions extends Phaser.Group {
     });
 
     // this.question1.setShadow(0, 5, '#cb4f7e')
-    this.question1.scale.setTo(0);
+    this.question1.scale.setTo(1);
 
-    const tween = game.add.tween(this.question1.scale).to({ x: 1, y: 1 }, duration, Phaser.Easing.Quintic.In, true, 500);
+
+    const tween = game.add.tween(this.scale).to({ x: 1, y: 1 }, duration, Phaser.Easing.Quintic.In, true, 500);
     tween.onComplete.add(() => {
       setTimeout(() => {
         game.startCountDown.dispatch();
@@ -41,8 +45,8 @@ export default class Questions extends Phaser.Group {
 
     this.question2 = new Text({
       text: question,
-      x: Config.width / 2,
-      y: Config.height * 5 / 12,
+      x: 0,
+      y: Config.height * -1 / 12,
       anchorX: 0.5,
       anchorY: 0.5,
       fontWeight: 'bold',
@@ -53,19 +57,19 @@ export default class Questions extends Phaser.Group {
     //	Stroke color and thickness
     // this.question2.setShadow(0, 5, '#cb4f7e')
 
-    this.question2.scale.setTo(0);
+    this.question2.scale.setTo(1);
 
-    game.add.tween(this.question2.scale).to({ x: 1, y: 1 }, duration, Phaser.Easing.Quintic.In, true, 500);
+    // game.add.tween(this.question2.scale).to({ x: 1, y: 1 }, duration, Phaser.Easing.Quintic.In, true, 500);
     this.add(this.question2);
   }
 
   buildQuestionBG () {
-    this.questionBG = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'question-bg');
-    this.questionBG.scale.setTo(0);
+    this.questionBG = this.game.add.sprite(0, 0, 'question-bg');
+    this.questionBG.scale.setTo(0.6);
     this.questionBG.anchor.setTo(0.5);
 
-    const tweenBG = game.add.tween(this.questionBG.scale).to({ x: 0.6, y: 0.6 }, duration, Phaser.Easing.Quintic.In, true, 500);
-    tweenBG.start();
+    // const tweenBG = game.add.tween(this.questionBG.scale).to({ x: 0.6, y: 0.6 }, duration, Phaser.Easing.Quintic.In, true, 500);
+    // tweenBG.start();
     this.add(this.questionBG);
   }
 
