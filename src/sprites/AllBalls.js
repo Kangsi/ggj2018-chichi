@@ -25,7 +25,7 @@ export default class AllBalls extends Phaser.Group {
   constructor (game) {
     super(game)
     this.list = [];
-
+    this.ballCounter = 0;
     game.startCountDown.add(() => {
       this.createBalls();
     });
@@ -105,6 +105,15 @@ export default class AllBalls extends Phaser.Group {
 
   disappearTween (ball, playerID) {
     ball.disappearAnimation(playerID);
+
+    this.ballCounter += 1;
+
+    if (this.ballCounter === this.list.length) {
+      console.log("testing")
+      setTimeout(() => {
+        this.game.state.start('Game');
+      }, 2000);
+    }
   }
 
   render() {
