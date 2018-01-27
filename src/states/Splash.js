@@ -2,7 +2,11 @@ import Phaser from 'phaser';
 import { centerGameObjects } from '../utils';
 
 export default class extends Phaser.State {
-  init () {}
+  init () {
+    for (let i = 0; i < 8; i += 1) {
+      game.input.addPointer();
+    }
+  }
 
   preload () {
     this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg')
@@ -21,7 +25,7 @@ export default class extends Phaser.State {
   }
 
   create () {
-    this.state.start('TapToJoin');
+    this.state.start('Game');
     this.load.image('shoe', 'assets/images/shoe.png');
     this.load.image('mushroom', 'assets/images/mushroom2.png');
   }
