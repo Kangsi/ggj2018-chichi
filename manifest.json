@@ -1,0 +1,9 @@
+{
+    "name": "Flawless", 
+    "short_name": "Flawless", 
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "background_color": "#3E4EB8",
+    "theme_color": "#2F3BA2"
+}
