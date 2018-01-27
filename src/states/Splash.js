@@ -25,7 +25,7 @@ export default class extends Phaser.State {
   }
 
   create () {
-    this.state.start('Game');
+    this.state.start('TapToJoin');
     this.load.image('shoe', 'assets/images/shoe.png');
     this.load.image('mushroom', 'assets/images/mushroom2.png');
   }
