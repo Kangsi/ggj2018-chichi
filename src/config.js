@@ -10,3 +10,7 @@ export default {
   transparent: false,
   antialias: false,
 };
+/*
+Globals:
+  game.players
+ */

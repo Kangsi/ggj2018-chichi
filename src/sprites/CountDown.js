@@ -3,11 +3,10 @@ import Text from '../services/Text';
 import Overlay from '../services/Overlay';
 import Config from '../config';
 
-let seconds = 3;
-
 export default class Questions extends Phaser.Group {
   constructor (game) {
     super(game);
+    this.seconds = 3;
     this.game = game;
 
     this.game.startCountDown.add(() => {
@@ -19,7 +18,7 @@ export default class Questions extends Phaser.Group {
 
   buildTimer () {
     this.timer = new Text({
-      text: seconds,
+      text: this.seconds,
       x: Config.width / 2,
       y: Config.height / 2,
       anchorX: 0.5,
@@ -38,21 +37,20 @@ export default class Questions extends Phaser.Group {
   }
 
   setTime () {
-    seconds -= 1;
-    this.timer.text = seconds > 0 ? seconds : 'Start!';
+    this.seconds -= 1;
+    this.timer.text = this.seconds > 0 ? this.seconds : 'Start!';
 
-    if (seconds < 0) {
+    if (this.seconds < 0) {
       return;
     }
     this.timer.scale.setTo(0);
 
     this.tween.start();
 
-    if (seconds === 0) {
+    if (this.seconds === 0) {
       setTimeout(() => {
         this.timer.visible = false;
-        this.game.endRound.dispatch();
-
+        this.game.startGameTimer.dispatch();
       }, 2000);
       this.overlay.visible = false;
     }

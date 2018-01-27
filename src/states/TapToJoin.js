@@ -3,11 +3,11 @@ import Phaser from 'phaser';
 
 export default class extends Phaser.State {
   init () {
-    this.players = [
-      false,
-      false,
-      false,
-      false
+    game.players = [
+      false,  //topleft
+      false,  //topright
+      false,  //botleft
+      false   //botright
     ];
     this.canStart = false;
   }
@@ -56,16 +56,16 @@ export default class extends Phaser.State {
   }
   clickedButton (image, id) {
     if (image.alpha > 0.5) {
-      this.players[id] = true;
+      game.players[id] = true;
       image.alpha = 0.01;
     } else {
       image.alpha = 1;
-      this.players[id] = false;
+      game.players[id] = false;
     }
 
     let amountOfPlayers = 0;
-    for (let i = 0; i < this.players.length; i += 1) {
-      if (this.players[i] === true) {
+    for (let i = 0; i < game.players.length; i += 1) {
+      if (game.players[i] === true) {
         amountOfPlayers += 1;
       }
       if (amountOfPlayers > 2) {

@@ -3,16 +3,16 @@ import Phaser from 'phaser';
 import AllBalls from '../sprites/AllBalls';
 import Questions from '../sprites/Questions';
 import CountDown from '../sprites/CountDown';
-
+import GameTimer from '../sprites/GameTimer';
 
 export default class extends Phaser.State {
   init () {
     game.physics.startSystem(Phaser.Physics.arcade);
     this.game.startCountDown = new Phaser.Signal();
-    this.game.endRound = new Phaser.Signal();
-
     this.pointers = [];
     this.game.playerScore = [ 0, 0, 0, 0 ];
+    this.game.startGameTimer = new Phaser.Signal();
+    this.game.endRound = new Phaser.Signal();
   }
   preload () {}
 
@@ -33,7 +33,7 @@ export default class extends Phaser.State {
     this.allBalls = new AllBalls(game);
     this.questions = new Questions(game, 'Placeholder?');
     this.countDown = new CountDown(game);
-
+    this.gameTimer = new GameTimer(game, 5);
     this.game.endRound.add(() => {
       this.doEndRound();
     });
@@ -51,8 +51,8 @@ export default class extends Phaser.State {
   }
 
   checkInput () {
-    const playerInput = [ 0, 0, 0, 0 ]
-    const playerIndex = [ 0, 0, 0, 0 ]
+    const playerInput = [ 0, 0, 0, 0 ];
+    const playerIndex = [ 0, 0, 0, 0 ];
     for (let i = 0; i < this.pointers.length; i += 1) {
       if (this.pointers[i].position.x < game.width / 2 && this.pointers[i].position.y < game.height / 2) {
         playerInput[0] += 1;
