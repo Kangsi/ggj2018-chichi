@@ -4,7 +4,7 @@ import WebFont from 'webfontloader'
 export default class extends Phaser.State {
   init () {
     this.game.scale.forceOrientation(true, false);
-
+    this.game.time.advancedTiming = true;
     this.stage.backgroundColor = '#EDEEC9';
     this.fontsReady = false;
     this.fontsLoaded = this.fontsLoaded.bind(this);

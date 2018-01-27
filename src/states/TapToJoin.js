@@ -1,6 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser';
 import Player from '../services/Player';
+import Flaws from '../services/Flaws';
 import ParticleSystem from '../sprites/ParticleSystem'
 
 export default class extends Phaser.State {
@@ -10,6 +11,13 @@ export default class extends Phaser.State {
       game.players.push(new Player(i));
     }
     this.canStart = false;
+
+    game.flaws = new Flaws();
+    const info = game.cache.getJSON('flaws');
+
+    for (let i = 0; i < info.flaws.length; i += 1) {
+      game.flaws.addInfo(info.flaws[i].question, info.flaws[i].image);
+    }
     this.starParticles = new ParticleSystem('star');
   }
   preload () {

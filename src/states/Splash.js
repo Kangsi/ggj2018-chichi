@@ -17,7 +17,16 @@ export default class extends Phaser.State {
     //
     // load your assets
     //
+    this.load.json('flaws', 'assets/values/flaws.json');
+
+    // All flaws
     this.load.image('shoe', 'assets/images/shoe.png');
+    this.load.image('smile', 'assets/images/smile.png');
+    this.load.image('hangry', 'assets/images/hangry.png');
+    this.load.image('nose', 'assets/images/nose.png');
+
+    this.load.image('question-bg', 'assets/images/question-bg.png');
+
     this.load.image('mushroom', 'assets/images/mushroom2.png');
     this.load.image('bg', 'assets/images/bg.png');
 
@@ -34,13 +43,18 @@ export default class extends Phaser.State {
     this.load.image('player-button', 'assets/images/player-button.png');
     this.load.image('player-button-mirror', 'assets/images/player-button-mirror.png');
     this.load.image('play-button', 'assets/images/play-button.png');
+    this.load.bitmapFont('awesome-font', 'assets/images/awesome-font-export.png', 'assets/images/awesome-font-export.xml');
     this.load.image('player-button2', 'assets/images/player-button2.png');
     this.load.image('play-buttonbg', 'assets/images/play-buttonbg.png');
+    this.load.image('cross', 'assets/images/cross.png');
     this.load.image('star', 'assets/images/star.png');
   }
 
   create () {
     this.state.start('TapToJoin');
+
+
+
     this.load.image('shoe', 'assets/images/shoe.png');
     this.load.image('mushroom', 'assets/images/mushroom2.png');
   }

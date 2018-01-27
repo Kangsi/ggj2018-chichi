@@ -3,10 +3,10 @@ import Text from '../services/Text';
 import Config from '../config';
 
 const transformList = [
-  { x: Config.width / 4,      y: Config.height / 4,     angle: 180 - 55},
-  { x: Config.width * 3 / 4,  y: Config.height / 4,     angle: 180 + 55},
-  { x: Config.width / 4,      y: Config.height * 3 / 4, angle: 0 + 55},
-  { x: Config.width * 3 / 4,  y: Config.height * 3 / 4, angle: 0 - 55},
+  { x: Config.width / 6,      y: Config.height / 5,     angle: 180 - 55},
+  { x: Config.width * 5 / 6,  y: Config.height / 5,     angle: 180 + 55},
+  { x: Config.width / 6,      y: Config.height * 4 / 5, angle: 0 + 55},
+  { x: Config.width * 5 / 6,  y: Config.height * 4 / 5, angle: 0 - 55},
 ];
 
 export default class PlayersScore extends Phaser.Group {
@@ -32,19 +32,14 @@ export default class PlayersScore extends Phaser.Group {
       if (!game.players[i].active) {
         continue;
       }
-      const text = new Text({
-        text: 0,
-        x: transformList[i].x,
-        y: transformList[i].y,
-        anchorX: 0.5,
-        anchorY: 0.5,
-        fontSize: 60,
-        fontWeight: 'bold',
-      });
+      const text = new Phaser.BitmapText(game, transformList[i].x, transformList[i].y, 'awesome-font', 0, 20);
 
+      text.anchor.setTo(0.5);
       text.angle = transformList[i].angle;
       text.visible = false;
       this.textList[i] = text;
+      text.stroke = '#fff';
+      text.strokeThickness = 16;
       this.add(text);
     }
   }

@@ -1,28 +1,19 @@
 import Phaser from 'phaser';
-import Text from '../services/Text';
-import Overlay from '../services/Overlay';
 
 export default class GameTimer extends Phaser.Group {
   constructor (game, time) {
     super(game);
     this.time = time;
     this.game = game;
-    this.buildOverlay();
     this.game.startGameTimer.add(() => {
       setTimeout(() => {
         this.buildTimer();
-      }, 500)
+      }, 500);
     });
   }
   buildTimer () {
-    this.timer = new Text({
-      text: this.time,
-      x: game.width / 2,
-      y: game.height / 2,
-      anchorX: 0.5,
-      anchorY: 0.5,
-      fontSize: 150
-    });
+    this.timer = new Phaser.BitmapText(game, game.width / 2, game.height / 2 + 80, 'awesome-font', this.time)
+    this.timer.anchor.setTo(0.5)
 
     this.add(this.timer);
     this.tween = this.game.add.tween(this.timer.scale).to({}, 500, Phaser.Easing.Quintic.In, true, 0);
@@ -49,15 +40,7 @@ export default class GameTimer extends Phaser.Group {
         this.timer.visible = false;
         game.endRound.dispatch();
       }, 2000);
-      this.overlay.visible = true;
+      this.game.toggleOverlay.dispatch(true);
     }
-  }
-
-  buildOverlay () {
-    this.overlay = new Overlay({
-      alpha: 0
-    });
-    this.overlay.visible = false;
-    this.add(this.overlay);
   }
 }

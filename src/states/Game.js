@@ -6,6 +6,7 @@ import CountDown from '../sprites/CountDown';
 import GameTimer from '../sprites/GameTimer';
 import PlayersScore from '../sprites/PlayersScore';
 import CreateBG from '../sprites/CreateBG';
+import Overlay from '../services/Overlay';
 
 export default class extends Phaser.State {
   init () {
@@ -17,10 +18,15 @@ export default class extends Phaser.State {
     this.game.endRound = new Phaser.Signal();
     this.game.updateScore = new Phaser.Signal()
     this.game.saveScore = new Phaser.Signal();
+    this.game.toggleOverlay = new Phaser.Signal();
+    this.game.time.desiredFps = 60;
+
+    this.flaw = game.flaws.getFlaw();
   }
   preload () {}
 
   create () {
+
     this.game.input.onDown.add((pointer) => {
       this.pointers.push(pointer);
       this.checkInput();
@@ -34,11 +40,26 @@ export default class extends Phaser.State {
       }
     });
     this.createBG = new CreateBG(game);
-    this.allBalls = new AllBalls(game);
-    this.questions = new Questions(game, 'Placeholder?');
-    this.countDown = new CountDown(game);
+    this.cross = this.game.add.sprite(0, 0, 'cross');
+    this.cross.width = game.width;
+    this.cross.height = game.height;
+
     this.gameTimer = new GameTimer(game, 5);
-    this.playersScore = new PlayersScore(game, 'shoe');
+
+    this.allBalls = new AllBalls(game, this.flaw.image);
+    this.questions = new Questions(game, this.flaw.question);
+    this.countDown = new CountDown(game);
+
+
+    this.playersScore = new PlayersScore(game, this.flaw.image);
+
+    this.overlay = new Overlay({ alpha: 0});
+    game.add.existing(this.overlay)
+
+    this.game.toggleOverlay.add((visible) => {
+      this.overlay.visible = visible;
+    });
+
     this.game.endRound.add(() => {
       this.doEndRound();
     });
@@ -47,11 +68,12 @@ export default class extends Phaser.State {
   doEndRound () {
     setTimeout(() => {
       this.allBalls.removeAllBalls();
-    }, 3000);
+    }, 1000);
   }
-
+  
   render () {
     if (__DEV__) {
+      this.game.debug.text(game.time.fps, 25, 25, '#00ff00')
     }
   }
 
