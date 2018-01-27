@@ -1,20 +1,27 @@
 <font>
 	<info face="C:\Users\Kangsi\Documents\Git\GGJ2018\assets\images\awesome-font-export" size="80" />
-	<common lineHeight="80" scaleW="1883" scaleH="2047" pages="1" />
+	<common lineHeight="80" scaleW="1599" scaleH="1597" pages="1" />
 	<pages>
 		<page id="0" file="C:\Users\Kangsi\Documents\Git\GGJ2018\assets\images\awesome-font-export.png" />
 	</pages>
-	<chars count="12">
-		<char id="48" x="0" y="672" width="536" height="668" xoffset="0" yoffset="-587" xadvance="537" /><!-- 0 -->
-		<char id="49" x="1564" y="0" width="318" height="668" xoffset="0" yoffset="-589" xadvance="319" /><!-- 1 -->
-		<char id="50" x="1070" y="0" width="493" height="670" xoffset="0" yoffset="-590" xadvance="494" /><!-- 2 -->
-		<char id="51" x="1074" y="1376" width="492" height="669" xoffset="0" yoffset="-588" xadvance="493" /><!-- 3 -->
-		<char id="52" x="0" y="0" width="556" height="671" xoffset="0" yoffset="-590" xadvance="557" /><!-- 4 -->
-		<char id="53" x="557" y="0" width="512" height="670" xoffset="0" yoffset="-590" xadvance="513" /><!-- 5 -->
-		<char id="54" x="0" y="1341" width="535" height="705" xoffset="0" yoffset="-625" xadvance="536" /><!-- 6 -->
-		<char id="55" x="1074" y="671" width="493" height="704" xoffset="0" yoffset="-589" xadvance="494" /><!-- 7 -->
-		<char id="56" x="536" y="1379" width="493" height="667" xoffset="0" yoffset="-587" xadvance="494" /><!-- 8 -->
-		<char id="57" x="537" y="672" width="536" height="706" xoffset="0" yoffset="-625" xadvance="537" /><!-- 9 -->
+	<chars count="19">
+		<char id="48" x="826" y="1008" width="269" height="334" xoffset="0" yoffset="-254" xadvance="270" /><!-- 0 -->
+		<char id="49" x="1380" y="0" width="159" height="334" xoffset="0" yoffset="-255" xadvance="160" /><!-- 1 -->
+		<char id="50" x="1352" y="689" width="246" height="335" xoffset="0" yoffset="-255" xadvance="247" /><!-- 2 -->
+		<char id="51" x="1352" y="353" width="246" height="335" xoffset="0" yoffset="-255" xadvance="247" /><!-- 3 -->
+		<char id="52" x="826" y="671" width="278" height="336" xoffset="0" yoffset="-256" xadvance="279" /><!-- 4 -->
+		<char id="53" x="1096" y="1008" width="255" height="335" xoffset="0" yoffset="-255" xadvance="256" /><!-- 5 -->
+		<char id="54" x="1105" y="354" width="246" height="356" xoffset="0" yoffset="-266" xadvance="247" /><!-- 6 -->
+		<char id="55" x="1133" y="0" width="246" height="352" xoffset="0" yoffset="-255" xadvance="247" /><!-- 7 -->
+		<char id="56" x="1352" y="1025" width="246" height="334" xoffset="0" yoffset="-254" xadvance="247" /><!-- 8 -->
+		<char id="57" x="864" y="0" width="268" height="353" xoffset="0" yoffset="-273" xadvance="269" /><!-- 9 -->
+		<char id="35" x="413" y="1328" width="280" height="268" xoffset="0" yoffset="-222" xadvance="281" /><!-- # -->
+		<char id="103" x="0" y="312" width="525" height="325" xoffset="0" yoffset="-251" xadvance="526" /><!-- g -->
+		<char id="115" x="0" y="0" width="833" height="311" xoffset="0" yoffset="-243" xadvance="834" /><!-- s -->
+		<char id="101" x="526" y="312" width="337" height="358" xoffset="0" yoffset="-273" xadvance="338" /><!-- e -->
+		<char id="116" x="413" y="982" width="412" height="345" xoffset="0" yoffset="-260" xadvance="413" /><!-- t -->
+		<char id="100" x="0" y="638" width="426" height="343" xoffset="0" yoffset="-266" xadvance="427" /><!-- d -->
+		<char id="118" x="0" y="982" width="412" height="350" xoffset="0" yoffset="-265" xadvance="413" /><!-- v -->
 		<char id="32" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="20" /><!--   -->
 		<char id="9" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="160" /><!-- 	 -->
 	</chars>

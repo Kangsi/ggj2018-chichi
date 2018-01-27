@@ -3,7 +3,7 @@ import Player from '../services/Player';
 import CreateBG from '../sprites/CreateBG';
 import PlayerEndScore from '../sprites/PlayerEndScore';
 import Config from '../config';
-import PlacementScreen from '../sprites/PlacementScreen';
+import Curtain from '../sprites/Curtain';
 
 const position = [
   { x: 0, y: 0 },
@@ -18,9 +18,7 @@ export default class extends Phaser.State {
     this.game.showPlacement = new Phaser.Signal();
 
     this.step = 0;
-    console.log(this.step);
     this.playerInfo = [...game.players];
-    console.log(this.playerInfo)
     this.playerInfo.sort((a, b) => {
       return (a.finalScore() > b.finalScore()) ? -1 : (a.finalScore() < b.finalScore()) ? 1 : 0;
     });
@@ -30,10 +28,6 @@ export default class extends Phaser.State {
         this.playerInfo.splice(i, 1);
       }
     }
-    console.log(this.playerInfo);
-  }
-
-  buildScore (player) {
   }
 
   preload () {
@@ -51,18 +45,19 @@ export default class extends Phaser.State {
           return;
         }
         setTimeout(() => {
-          this.game.showPlacement.dispatch();
+          this.game.showNextPerson.dispatch();
 
         });
-      }, 3000);
+      }, 2000);
     });
 
-    this.game.showPlacement.add(() => {
-      this.playerEndScore = new PlacementScreen(game, 0, position[this.playerInfo[this.step].id].x, position[this.playerInfo[this.step].id].y);
-    })
+    setTimeout(() => {
+      this.game.showNextPerson.dispatch();
+    }, 3500);
   }
 
-  create() {
+
+  create () {
     this.createBG = new CreateBG(game);
     this.cross = this.game.add.sprite(0, 0, 'cross');
     this.cross.width = game.width;
@@ -70,6 +65,8 @@ export default class extends Phaser.State {
 
 
     this.game.showPlacement.dispatch();
+
+    this.curtain = new Curtain(game, false);
   }
 
   update() {}

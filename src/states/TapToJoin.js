@@ -5,6 +5,7 @@ import Flaws from '../services/Flaws';
 import ParticleSystem from '../sprites/ParticleSystem';
 
 export default class extends Phaser.State {
+
   init () {
     game.players = [];
     for (let i = 0; i < 4; i += 1) {
@@ -20,11 +21,11 @@ export default class extends Phaser.State {
     }
     this.starParticles = new ParticleSystem('star');
   }
-  preload () {
+
+  preload() {
 
   }
-
-  create () {
+  create() {
     // background
     this.createBGs();
 
@@ -38,11 +39,14 @@ export default class extends Phaser.State {
     this.createPlayButton();
     this.createAudio();
   }
-  update () {
+
+  update() {
   }
-  clickedPlay () {
+
+  clickedPlay() {
     game.state.start('Game');
   }
+
   createAudio () {
     this.bass = game.add.audio('drum');
     this.guitar = game.add.audio('guitar');
@@ -126,9 +130,9 @@ export default class extends Phaser.State {
         amountOfPlayers += 1;
       }
     }
-    if (amountOfPlayers > 2) {
+    if (amountOfPlayers > 3) {
       this.canStart = true;
-      if (amountOfPlayers === 3) {
+      if (amountOfPlayers === 4) {
         if (this.playButton.alpha !== 1) {
           this.starParticles.createEmitter(this.playButton.x, this.playButton.y);
           game.world.bringToTop(this.playButton);
@@ -145,6 +149,7 @@ export default class extends Phaser.State {
     }
     this.toggleAudio(id);
   }
+
   createBGs () {
     const bg = game.add.sprite(0, 0, 'bg');
 
@@ -163,6 +168,7 @@ export default class extends Phaser.State {
       player4Active
     ];
   }
+
   createRays (pSpeed, pRotation) {
     let animationSpeed = pSpeed;
     let rotation = pRotation;
@@ -200,7 +206,7 @@ export default class extends Phaser.State {
     this.p4tween2.chain(this.p4tween1);
   }
 
-  createPlayButton () {
+  createPlayButton() {
     this.playButtonbg = game.add.sprite(game.width / 2, game.height / 2, 'play-buttonbg');
     this.playButtonbg.anchor.setTo(0.5);
     this.playButtonbg.inputEnabled = true;
@@ -209,7 +215,9 @@ export default class extends Phaser.State {
     this.playButton = game.add.sprite(game.width / 2, game.height / 2, 'play-button');
     this.playButton.anchor.setTo(0.5);
     this.playButton.inputEnabled = false;
-    this.playButton.events.onInputDown.add(() => { this.clickedPlay(); });
+    this.playButton.events.onInputDown.add(() => {
+      this.clickedPlay();
+    });
     this.playButton.alpha = 0;
     this.playButton.scale.setTo(0.8);
     this.playButtont1 = this.game.add.tween(this.playButton).to({rotation: 0.1}, 200);
@@ -239,7 +247,8 @@ export default class extends Phaser.State {
     // this.playButtonbgTween1.chain(this.playButtonbgTween2);
     // this.playButtonbgTween2.chain(this.playButtonbgTween1);
   }
-  createJoinButtons () {
+
+  createJoinButtons() {
     const player1 = game.add.sprite(game.width / 2, game.height / 2, 'player-button');
     const player2 = game.add.sprite(game.width, game.height / 2, 'player-button-mirror');
     const player3 = game.add.sprite(0, game.height / 2, 'player-button-mirror');
@@ -263,7 +272,9 @@ export default class extends Phaser.State {
         this.buttons[i].height = (game.height / 2);
       }
       this.buttons[i].inputEnabled = true;
-      this.buttons[i].events.onInputDown.add(() => { this.clickedButton(this.buttons[i], i); });
+      this.buttons[i].events.onInputDown.add(() => {
+        this.clickedButton(this.buttons[i], i);
+      });
     }
   }
 

@@ -33,7 +33,7 @@ export default class PlayersScore extends Phaser.Group {
         continue;
       }
       const text = new Phaser.BitmapText(game, transformList[i].x, transformList[i].y, 'awesome-font', 0, 20);
-
+      text.scale.setTo(1.5);
       text.anchor.setTo(0.5);
       text.angle = transformList[i].angle;
       text.visible = false;

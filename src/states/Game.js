@@ -7,6 +7,7 @@ import GameTimer from '../sprites/GameTimer';
 import PlayersScore from '../sprites/PlayersScore';
 import CreateBG from '../sprites/CreateBG';
 import Overlay from '../services/Overlay';
+import Curtain from '../sprites/Curtain';
 
 export default class extends Phaser.State {
   init () {
@@ -20,12 +21,16 @@ export default class extends Phaser.State {
     this.game.saveScore = new Phaser.Signal();
     this.game.toggleOverlay = new Phaser.Signal();
     this.game.time.desiredFps = 60;
+    this.game.showCurtain = new Phaser.Signal();
 
     this.flaw = game.flaws.getFlaw();
   }
   preload () {}
 
   create () {
+    this.game.showCurtain.add((goIn) => {
+      this.buildCurtain(goIn);
+    });
 
     this.game.input.onDown.add((pointer) => {
       this.pointers.push(pointer);
@@ -75,6 +80,10 @@ export default class extends Phaser.State {
     if (__DEV__) {
       this.game.debug.text(game.time.fps, 25, 25, '#00ff00')
     }
+  }
+
+  buildCurtain (goIn) {
+    this.curtain = new Curtain(game, goIn);
   }
 
   checkInput () {

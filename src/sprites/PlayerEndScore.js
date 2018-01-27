@@ -10,12 +10,44 @@ export default class PlayerEndScore extends Phaser.Group {
     this.info = info;
 
     this.buildBalls();
-    this.buildText(placement);
+    this.buildText(placement, id);
   }
 
-  buildText(id) {
-    this.timer = new Phaser.BitmapText(game, game.width / 4, game.height / 4 + 100, 'awesome-font', `#${id}`);
+  getPlacement (placement) {
+    switch (placement) {
+      case 1:
+        return 'e';
+      case 2:
+        return 't';
+      case 3:
+        return 'd';
+      case 4:
+        return 'v';
+    }
+  }
+
+  buildText(placement, id) {
+    this.timer = new Phaser.BitmapText(game, game.width / 4 - 100, game.height / 4 + 80, 'awesome-font', this.getPlacement(placement));
+    this.timer.scale.setTo(2);
     this.timer.anchor.setTo(0.5, 0.5);
+    switch (id) {
+      case 0:
+        this.timer.y = game.height / 4 - 80;
+        this.timer.angle = 180 - 55;
+        break;
+      case 1:
+        this.timer.x = game.width / 4 + 100;
+        this.timer.y = game.height / 4 - 80;
+        this.timer.angle = 180 + 55;
+        break;
+      case 2:
+        this.timer.angle = 55;
+        break;
+      case 3:
+        this.timer.x = game.width / 4 + 100;
+        this.timer.angle = -55;
+        break;
+    }
 
     this.add(this.timer);
   }

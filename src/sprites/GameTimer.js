@@ -14,6 +14,7 @@ export default class GameTimer extends Phaser.Group {
   buildTimer () {
     this.timer = new Phaser.BitmapText(game, game.width / 2, game.height / 2 + 80, 'awesome-font', this.time)
     this.timer.anchor.setTo(0.5)
+    this.timer.scale.setTo(2);
 
     this.add(this.timer);
     this.tween = this.game.add.tween(this.timer.scale).to({}, 500, Phaser.Easing.Quintic.In, true, 0);
@@ -26,8 +27,11 @@ export default class GameTimer extends Phaser.Group {
 
   setTime () {
     this.time -= 1;
-    this.timer.text = this.time > 0 ? this.time : 'Done!';
+    this.timer.text = this.time > 0 ? this.time : 's';
 
+    if (this.time <= 0){
+      game.world.bringToTop(this);
+    }
     if (this.time < 0) {
       return;
     }
