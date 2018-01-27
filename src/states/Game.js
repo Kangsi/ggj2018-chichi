@@ -40,7 +40,12 @@ export default class extends Phaser.State {
       }
     });
     this.createBG = new CreateBG(game);
+    this.cross = this.game.add.sprite(0, 0, 'cross');
+    this.cross.width = game.width;
+    this.cross.height = game.height;
+
     this.gameTimer = new GameTimer(game, 5);
+
     this.allBalls = new AllBalls(game, this.flaw.image);
     this.questions = new Questions(game, this.flaw.question);
     this.countDown = new CountDown(game);
@@ -48,7 +53,7 @@ export default class extends Phaser.State {
 
     this.playersScore = new PlayersScore(game, this.flaw.image);
 
-    this.overlay = new Overlay({ alpha: 0.5});
+    this.overlay = new Overlay({ alpha: 0});
     game.add.existing(this.overlay)
 
     this.game.toggleOverlay.add((visible) => {

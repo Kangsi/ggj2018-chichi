@@ -73,35 +73,81 @@ export default class AllBalls extends Phaser.Group {
   }
 
   removeAllBalls () {
-    const timeDifferenceBetweenPlayers = 1000;
+    const player1balls = [];
+    const player2balls = [];
+    const player3balls = [];
+    const player4balls = [];
+
+
+    let timeDifferenceBetweenPlayers = 0;
+    const timeDifferenceBetweenPlayersStep = 1000;
+    const isReal = [ false, false, false, false]
     const timeDifferenceCurrentPlayer = [0,0,0,0];
     const timeStep = 100;
     for (let i = 0; i < this.list.length; i += 1) {
       // Left top corner
-      if (this.list[i].x < game.width / 2 && this.list[i].y < game.height / 2) {
-        setTimeout(() => {
-          this.disappearTween(this.list[i], 0);
-        }, timeDifferenceBetweenPlayers * 0 + timeDifferenceCurrentPlayer[0])
-        timeDifferenceCurrentPlayer[0] += timeStep;
+      if (this.list[i].x < game.width / 2 && this.list[i].y < game.height / 2 ) {
+        player1balls.push(this.list[i]);
         // Right top corner
       } else if (this.list[i].x >= game.width / 2 && this.list[i].y < game.height / 2) {
-        setTimeout(() => {
-          this.disappearTween(this.list[i], 1);
-        }, timeDifferenceBetweenPlayers * 1 + timeDifferenceCurrentPlayer[1])
-        timeDifferenceCurrentPlayer[1] += timeStep;
+        player2balls.push(this.list[i]);
         // Left Bot corner
       } else if (this.list[i].x < game.width / 2 && this.list[i].y >= game.height / 2) {
-        setTimeout(() => {
-          this.disappearTween(this.list[i], 2);
-        }, timeDifferenceBetweenPlayers * 2 + timeDifferenceCurrentPlayer[2])
-        timeDifferenceCurrentPlayer[2] += timeStep;
+        player3balls.push(this.list[i]);
         // Right Bot corner
       } else {
-        setTimeout(() => {
-          this.disappearTween(this.list[i], 3);
-        }, timeDifferenceBetweenPlayers * 3 + timeDifferenceCurrentPlayer[3])
-        timeDifferenceCurrentPlayer[3] += timeStep;
+        player4balls.push(this.list[i]);
       }
+    }
+    if (player1balls.length === 0) {
+
+    } else {
+      for (let i = 0; i < player1balls.length; i += 1) {
+        setTimeout(() => {
+          this.disappearTween(player1balls[i], 0);
+        }, timeDifferenceBetweenPlayers + i * timeStep);
+      }
+
+      timeDifferenceBetweenPlayers += timeDifferenceBetweenPlayersStep;
+
+    }
+
+    if (player2balls.length === 0) {
+
+    } else {
+      for (let i = 0; i < player2balls.length; i += 1) {
+        setTimeout(() => {
+          this.disappearTween(player2balls[i], 1);
+        }, timeDifferenceBetweenPlayers + i * timeStep);
+      }
+
+      timeDifferenceBetweenPlayers += timeDifferenceBetweenPlayersStep;
+
+    }
+
+    if (player3balls.length === 0) {
+
+    } else {
+      for (let i = 0; i < player3balls.length; i += 1) {
+        setTimeout(() => {
+          this.disappearTween(player3balls[i], 2);
+        }, timeDifferenceBetweenPlayers + i * timeStep);
+      }
+
+      timeDifferenceBetweenPlayers += timeDifferenceBetweenPlayersStep;
+
+    }
+    if (player4balls.length === 0) {
+
+    } else {
+      for (let i = 0; i < player4balls.length; i += 1) {
+        setTimeout(() => {
+          this.disappearTween(player4balls[i], 3);
+        }, timeDifferenceBetweenPlayers + i * timeStep);
+      }
+
+      timeDifferenceBetweenPlayers += timeDifferenceBetweenPlayersStep;
+
     }
   }
 
@@ -114,7 +160,6 @@ export default class AllBalls extends Phaser.Group {
       setTimeout(() => {
         this.game.saveScore.dispatch();
         console.log(game.players)
-
         this.game.state.start('Game');
       }, 2000);
     }

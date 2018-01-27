@@ -2,6 +2,8 @@ export default class Flaws {
   constructor () {
     this.step = 0;
 
+    this.maxQuestion = 5;
+
     this.questionsList = [];
     this.imageList = [];
   }

@@ -43,6 +43,7 @@ export default class extends Phaser.State {
     this.load.bitmapFont('awesome-font', 'assets/images/awesome-font-export.png', 'assets/images/awesome-font-export.xml');
     this.load.image('player-button2', 'assets/images/player-button2.png');
     this.load.image('play-buttonbg', 'assets/images/play-buttonbg.png');
+    this.load.image('cross', 'assets/images/cross.png');
   }
 
   create () {
