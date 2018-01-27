@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import Text from '../services/Text';
+import Config from '../config';
 
 const transformList = [
-  { x: game.width / 4, y: game.height / 4, angle: 180 },
-  { x: game.width / 4, y: game.height * 3 / 4, angle: 180 },
-  { x: game.width * 3 / 4, y: game.height / 4, angle: 0 },
-  { x: game.width * 3 / 4, y: game.height * 3 / 4, angle: 0 },
-]
+  { x: Config.width / 4,      y: Config.height / 4,     angle: 180 - 55},
+  { x: Config.width * 3 / 4,  y: Config.height / 4,     angle: 180 + 55},
+  { x: Config.width / 4,      y: Config.height * 3 / 4, angle: 0 + 55},
+  { x: Config.width * 3 / 4,  y: Config.height * 3 / 4, angle: 0 - 55},
+];
 
 export default class PlayersScore extends Phaser.Group {
   constructor (game) {
@@ -15,25 +16,41 @@ export default class PlayersScore extends Phaser.Group {
     this.game = game;
     this.textList = [];
     this.buildTextScore();
+
+    this.game.updateScore.add((id) => {
+      this.changeText(id);
+    });
   }
 
   buildTextScore () {
-    for (let i = 0; i < transformList.length; i += 1) {
+    for (let i = 0; i < game.players.length; i += 1) {
+      if (!game.players[i]) {
+        console.log("removed score")
+        continue;
+      }
       const text = new Text({
         text: 0,
         x: transformList[i].x,
         y: transformList[i].y,
+        anchorX: 0.5,
+        anchorY: 0.5,
+        fontSize: 60,
+        fontWeight: 'bold',
       });
 
       text.angle = transformList[i].angle;
       text.visible = false;
-      this.textList.push(text);
+      this.textList[i] = text;
       this.add(text);
     }
   }
   
   changeText (id) {
+    if (!this.textList[id]) {
+      console.log(id)
+      return;
+    }
     this.textList[id].text = game.playerScore[id];
-
+    this.textList[id].visible = true;
   }
 }

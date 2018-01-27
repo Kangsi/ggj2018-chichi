@@ -64,7 +64,7 @@ export default class Ball extends Sprite {
     tween.onComplete.add(() => {
       game.playerScore[playerID] += 1;
       console.log(game.playerScore);
-
+      game.updateScore.dispatch(playerID);
     })
   }
 }
