@@ -12,7 +12,7 @@ export default class Questions extends Phaser.Group {
     this.buildQuestionBG();
     this.buildQuestion(question);
 
-    game.startGameTimer.add(() => {
+    this.game.startGameTimer.add(() => {
       this.disappear();
     });
   }
@@ -21,11 +21,11 @@ export default class Questions extends Phaser.Group {
     this.question1 = new Text({
       text: question,
       x: Config.width / 2,
-      y: Config.height * 3 / 4,
+      y: Config.height * 7 / 12,
       anchorX: 0.5,
       anchorY: 0.5,
       fontWeight: 'bold',
-      fontSize: 60,
+      fontSize: 36,
     });
 
     // this.question1.setShadow(0, 5, '#cb4f7e')
@@ -42,11 +42,11 @@ export default class Questions extends Phaser.Group {
     this.question2 = new Text({
       text: question,
       x: Config.width / 2,
-      y: Config.height * 1 / 4,
+      y: Config.height * 5 / 12,
       anchorX: 0.5,
       anchorY: 0.5,
       fontWeight: 'bold',
-      fontSize: 60,
+      fontSize: 36,
     });
 
     this.question2.angle = 180;
@@ -66,9 +66,10 @@ export default class Questions extends Phaser.Group {
 
     const tweenBG = game.add.tween(this.questionBG.scale).to({ x: 0.6, y: 0.6 }, duration, Phaser.Easing.Quintic.In, true, 500);
     tweenBG.start();
+    this.add(this.questionBG);
   }
 
   disappear () {
-    game.add.tween(this).to({alpha: 0}, 1000, null, true)
+    game.add.tween(this).to({alpha: 0}, 500, null, true);
   }
 }
