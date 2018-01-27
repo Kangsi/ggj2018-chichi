@@ -13,7 +13,7 @@ const position = [
 ]
 
 export default class extends Phaser.State {
-  init() {
+  init () {
     this.game.showNextPerson = new Phaser.Signal();
     this.game.showPlacement = new Phaser.Signal();
 

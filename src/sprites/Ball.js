@@ -2,7 +2,7 @@ import Phaser from 'phaser'
 import Sprite from '../services/Sprite';
 
 const dragCoefficient = 4000;
-const amplitude = 20;
+const amplitude = 40;
 
 export default class Ball extends Sprite {
   constructor({ asset, x, y, frame, anchorX = 0, anchorY = 0, inputEnabled = true }) {
@@ -12,7 +12,7 @@ export default class Ball extends Sprite {
     this.body.collideWorldBounds = true;
     this.body.angularDrag = 200;
     this.body.allowRotation = true;
-    this.body.bounce.set(0.5);
+    this.body.bounce.set(0.1);
     this.body.setCircle(this.width / 2);
     this.body.drag = new Phaser.Point(4000, 4000)
     this.inputEnabled = true;
