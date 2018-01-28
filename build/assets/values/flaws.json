@@ -1,0 +1,19 @@
+{
+  "flaws": [
+    { "question": "Who has the ugliest shoes?", "image": "shoe" },
+    { "question": "Who has the yellowest teeth?", "image": "smile" },
+    { "question": "Who has the biggest nose?", "image": "nose" },
+    { "question": "Who has the most chins?", "image": "chin" },
+    { "question": "Who is the worst gamer?", "image": "gamer" },
+    { "question": "Who can handle alcohol \n the least?", "image": "beer" },
+    { "question": "Who is the biggest nerd?", "image": "nerd" },
+    { "question": "Who is the biggest crybaby?", "image": "crybaby" },
+    { "question": "Who is the stinkiest?", "image": "poop" },
+    { "question": "Who has the smallest penis?", "image": "penis" },
+    { "question": "Who is most likely to eat \n their dog?", "image": "dog" },
+    { "question": "Who is most likely to vote \n for Trump?", "image": "trump" },
+    { "question": "Who has the worst taste in \n music?", "image": "musicnote" },
+    { "question": "Who tells the worst jokes?", "image": "joke" },
+    { "question": "Who is the dumbest?", "image": "brain" }
+  ]
+}

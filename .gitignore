@@ -5,9 +5,7 @@ plugins/
 dist/
 .vscode/
 *.log
-/index.html
-build/
-.idea/modules.xml
+/index.html.idea/modules.xml
 .idea/GGJ2018.iml
 .idea/vcs.xml
 .idea/inspectionProfiles/Project_Default.xml
