@@ -5,6 +5,14 @@ import { centerGameObjects } from '../utils';
 export default class extends Phaser.State {
   init () {
     this.counter = 0;
+
+    if (this.game.sounds) {
+      for (let i = this.game.sounds.length - 1; i >= 0; i -= 1) {
+        this.game.sounds[i].destroy();
+        this.game.sounds.splice(i, 1);
+
+      }
+    }
   }
 
   preload () {
@@ -99,13 +107,16 @@ export default class extends Phaser.State {
     this.load.audio('slide', 'assets/sounds/slide.mp3');
     this.load.audio('boom', 'assets/sounds/boom.mp3');
     this.load.audio('inflate', 'assets/sounds/inflate.wav');
-    this.load.audio('bgSoundMainmenu', 'assets/sounds/bgSoundMainmenu1.mp3');
   }
 
   create () {
     //
+
     let bgSound = game.add.audio('bgSoundMainmenu');
     bgSound.play();
+    bgSound.volume = 1;
+    this.game.sounds.push(bgSound);
+
     this.loaderBg.visible = false;
     this.loaderBar.visible = false;
 
@@ -126,6 +137,10 @@ export default class extends Phaser.State {
 
     this.bg.inputEnabled = true;
     this.bg.events.onInputUp.add(() => {
+      if (this.game.tapCounter < 1) {
+        this.game.tapCounter += 1;
+        return;
+      }
       bgSound.stop();
       this.state.start('TapToJoin');
     })
