@@ -2,7 +2,7 @@ export default class Flaws {
   constructor () {
     this.step = 0;
 
-    this.maxQuestion = 5;
+    this.maxQuestion = 1;
 
     this.isAsked = [];
     this.questionsList = [];
