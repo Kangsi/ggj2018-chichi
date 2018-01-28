@@ -49,8 +49,12 @@ export default class PlayerEndScore extends Phaser.Group {
         break;
     }
 
-    game.add.tween(this.timer.scale).to({ x: 2, y: 2 }, 200, null, true)
+    let tween = game.add.tween(this.timer.scale).to({ x: 2, y: 2 }, 200, null, true)
     this.add(this.timer);
+    tween.onComplete.add(()=>{
+      let boom = game.add.audio('boom');
+      boom.play();
+    });
   }
 
   buildBalls() {

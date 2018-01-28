@@ -51,6 +51,8 @@ export default class extends Phaser.State {
   }
 
   clickedPlay() {
+    let start = game.add.audio('start');
+    start.play();
     game.state.start('Game');
   }
 
@@ -129,6 +131,12 @@ export default class extends Phaser.State {
     }
   }
   clickedButton (image, id) {
+    this.join1 = game.add.audio('join1');
+    this.join2 = game.add.audio('join2');
+    this.join3 = game.add.audio('join3');
+    let joinSound = [this.join1, this.join2, this.join3];
+    let toPlay = Math.floor(Math.random() * joinSound.length);
+    joinSound[toPlay].play();
     if (image.alpha > 0.5) {
       game.players[id].setActive();
       image.alpha = 0.01;
