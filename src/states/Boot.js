@@ -23,9 +23,16 @@ export default class extends Phaser.State {
 
     this.load.image('loaderBg', './assets/images/loader-bg.png');
     this.load.image('loaderBar', './assets/images/loader-bar.png');
+    this.load.image('logo-bg', './assets/images/logo-bg.png');
+    this.load.image('logo-text', './assets/images/logo-text.png');
+    this.load.image('flawless-cloud-stars', './assets/images/flawless-cloud-stars.png');
+
   }
 
   render () {
+    for (let i = 0; i < 8; i += 1) {
+      game.input.addPointer();
+    }
     if (this.fontsReady) {
       this.state.start('Splash');
     }

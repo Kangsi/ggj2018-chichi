@@ -26,10 +26,11 @@ export default class Questions extends Phaser.Group {
       x: 0,
       y: Config.height * 0.2 / 12,
       anchorX: 0.5,
-      anchorY: 0,
+      anchorY: 1,
       fontWeight: 'bold',
       fontSize: 36,
     });
+    this.question1.angle = 180;
 
     // this.question1.setShadow(0, 5, '#cb4f7e')
     this.question1.scale.setTo(1);
@@ -48,12 +49,12 @@ export default class Questions extends Phaser.Group {
       x: 0,
       y: Config.height * -0.2 / 12,
       anchorX: 0.5,
-      anchorY: 0,
+      anchorY: 1,
       fontWeight: 'bold',
       fontSize: 36,
     });
 
-    this.question2.angle = 180;
+    this.question2.angle = 0;
     //	Stroke color and thickness
     // this.question2.setShadow(0, 5, '#cb4f7e')
 

@@ -135,7 +135,7 @@ export default class EndScreen extends Phaser.Group {
       cloudBounce2.chain(cloudBounce1);
 
       this.flawless.events.onInputUp.add(() => {
-        game.state.start('TapToJoin')
+        game.state.start('Splash');
       })
     }, 1000)
 
