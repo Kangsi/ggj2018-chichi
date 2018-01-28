@@ -4,13 +4,23 @@ import { centerGameObjects } from '../utils';
 
 export default class extends Phaser.State {
   init () {
+    this.counter = 0;
+
+    if (this.game.sounds) {
+      for (let i = this.game.sounds.length - 1; i >= 0; i -= 1) {
+        this.game.sounds[i].destroy();
+        this.game.sounds.splice(i, 1);
+
+      }
+    }
   }
 
   preload () {
     this.bg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-bg')
     game.add.tween(this.bg).to({ rotation: Math.PI * 2 }, 5000, null, true, 0, -1)
-    this.cloud = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'flawless-cloud-stars')
-    this.flawless = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-text')
+    this.cloud = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 50, 'flawless-cloud-stars')
+    this.flawless = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 50, 'logo-text')
+    game.add.tween(this.flawless.scale).to({ x: 1.2, y: 1.2 }, 300, null, true, 0, -1, true)
     centerGameObjects([this.cloud, this.flawless, this.bg])
 
     this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.height * 4 / 5, 'loaderBg')
@@ -72,11 +82,11 @@ export default class extends Phaser.State {
     this.load.image('blueBg', 'assets/images/blue-bg.png');
     this.load.image('yellowBg', 'assets/images/yellow-bg.png');
 
-<<<<<<< HEAD
-=======
+
+    this.load.image('flawless-text', 'assets/images/flawless-text.png');
     this.load.image('danger', 'assets/images/danger.png');
->>>>>>> origin/weikang
     this.load.image('flawless', 'assets/images/flawless.png');
+
 
     this.load.image('curtain', 'assets/images/curtain.png');
     this.load.image('results', 'assets/images/results.png');
@@ -97,17 +107,28 @@ export default class extends Phaser.State {
     this.load.audio('slide', 'assets/sounds/slide.mp3');
     this.load.audio('boom', 'assets/sounds/boom.mp3');
     this.load.audio('inflate', 'assets/sounds/inflate.wav');
+<<<<<<< HEAD
+    this.load.audio('bgSoundMainmenu', 'assets/sounds/bgSoundMainmenu1.mp3');
+    this.load.audio('stop', 'assets/sounds/stopinjapanese.mp3');
+    this.load.audio('go', 'assets/sounds/horn.mp3');
+    this.load.audio('hooray', 'assets/sounds/hooray.mp3');
   }
 
   create () {
-<<<<<<< HEAD
-    this.state.start('TapToJoin');
 =======
+  }
+
+  create () {
     //
+
+>>>>>>> master
+    let bgSound = game.add.audio('bgSoundMainmenu');
+    bgSound.play();
+    bgSound.volume = 1;
+    this.game.sounds.push(bgSound);
 
     this.loaderBg.visible = false;
     this.loaderBar.visible = false;
->>>>>>> origin/weikang
 
     this.load.image('shoe', 'assets/images/shoe.png');
     this.load.image('mushroom', 'assets/images/mushroom2.png');
@@ -126,15 +147,26 @@ export default class extends Phaser.State {
 
     this.bg.inputEnabled = true;
     this.bg.events.onInputUp.add(() => {
+      if (this.game.tapCounter < 1) {
+        this.game.tapCounter += 1;
+        return;
+      }
+      bgSound.stop();
       this.state.start('TapToJoin');
     })
     this.game.add.existing(this.text);
 
     this.game.time.events.loop(800, this.toggleVisibility, this);
+    this.game.time.events.loop(1600, this.toggleText, this);
   }
 
   toggleVisibility () {
     this.text.visible = !this.text.visible;
+  }
+
+  toggleText () {
+    this.counter += 1
+    this.text.text = this.counter % 2 === 0 ? 'Press to Start!' : '1 Credit(s)';
   }
 
   update () {

@@ -63,12 +63,18 @@ export default class extends Phaser.State {
     if (this.game.sounds) {
       for (let i = this.game.sounds.length - 1; i >= 0; i -= 1) {
         this.game.sounds[i].destroy();
+        this.game.sounds.splice(i, 1);
+        console.log("destroyed")
       }
     }
     this.bass = game.add.audio('drum');
     this.guitar = game.add.audio('guitar');
     this.melody = game.add.audio('melody');
-    this.game.sounds = [this.bass, this.guitar, this.melody];
+
+    this.game.sounds.push(this.bass);
+    this.game.sounds.push(this.guitar);
+    this.game.sounds.push(this.melody);
+console.log(this.game.sounds)
     for (let i = 0; i < this.game.sounds.length; i += 1) {
       this.game.sounds[i].volume = 0;
       this.game.sounds[i].loop = true;

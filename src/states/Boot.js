@@ -8,6 +8,9 @@ export default class extends Phaser.State {
     this.stage.backgroundColor = '#EDEEC9';
     this.fontsReady = false;
     this.fontsLoaded = this.fontsLoaded.bind(this);
+    this.game.sounds = [];
+    this.game.tapCounter = 0;
+
   }
 
   preload () {
@@ -26,6 +29,7 @@ export default class extends Phaser.State {
     this.load.image('logo-bg', './assets/images/logo-bg.png');
     this.load.image('logo-text', './assets/images/logo-text.png');
     this.load.image('flawless-cloud-stars', './assets/images/flawless-cloud-stars.png');
+    this.load.audio('bgSoundMainmenu', 'assets/sounds/bgSoundMainmenu1.mp3');
 
   }
 
