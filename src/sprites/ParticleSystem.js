@@ -13,11 +13,11 @@ export default class ParticleSystem {
 
   }
   //TODO make image emit from this position to all sides
-  createEmitter (xPos, yPos) {
+  createEmitter (xPos, yPos, scale = 1) {
     if (!this.activeEmitter){
       this.emitter = game.add.emitter(xPos, yPos, 20);
-      this.emitter.minParticleScale = 0.5;
-      this.emitter.maxParticleScale = 1.5;
+      this.emitter.minParticleScale = 0.5 * scale;
+      this.emitter.maxParticleScale = 1.5 * scale;
       this.emitter.makeParticles(this.image);
       this.emitter.gravity = 0;
       this.emitter.minParticleSpeed.setTo(-1500, -1500);

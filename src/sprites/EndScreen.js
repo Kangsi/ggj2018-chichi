@@ -16,6 +16,14 @@ export default class EndScreen extends Phaser.Group {
     this.player = player;
     this.buildSprite();
     this.starParticles = new ParticleSystem('star');
+    this.starParticles1 = new ParticleSystem('star');
+    this.starParticles2 = new ParticleSystem('star');
+    this.starParticles3 = new ParticleSystem('star');
+    this.starParticles4 = new ParticleSystem('star');
+    this.flawParticles1 = new ParticleSystem(this.player.itemList[0]);
+    this.flawParticles2 = new ParticleSystem(this.player.itemList[2]);
+    this.flawParticles3 = new ParticleSystem(this.player.itemList[1]);
+    this.flawParticles4 = new ParticleSystem(this.player.itemList[3]);
     this.game.showWinner.add((id) => {
       if (this.player.id === id) {
         this.doAnimation();
@@ -83,7 +91,7 @@ export default class EndScreen extends Phaser.Group {
           this.cloud.x = game.width / 4;
           this.cloud.y = game.height / 4;
           this.cloud.angle = 180;
-          this.starParticles.createEmitter(game.width / 2, game.height + 100);
+          //this.starParticles.createEmitter(game.width / 2, game.height + 100);
           break;
         case 1:
           this.flawless.x = -game.width / 4;
@@ -92,23 +100,32 @@ export default class EndScreen extends Phaser.Group {
           this.cloud.x = -game.width / 4;
           this.cloud.y = game.height / 4;
           this.cloud.angle = 180;
-          this.starParticles.createEmitter(game.width / 2, game.height + 100);
+         // this.starParticles.createEmitter(game.width / 2, game.height + 100);
           break;
         case 2:
           this.flawless.x = game.width / 4;
           this.flawless.y = -game.height / 4;
           this.cloud.x = game.width / 4;
           this.cloud.y = -game.height / 4;
-          this.starParticles.createEmitter(game.width / 2, -100);
+          //this.starParticles.createEmitter(game.width / 2, -100);
           break;
         case 3:
           this.flawless.x = -game.width / 4;
           this.flawless.y = -game.height / 4;
           this.cloud.x = -game.width / 4;
           this.cloud.y = -game.height / 4;
-          this.starParticles.createEmitter(game.width / 2, -100);
+          //this.starParticles.createEmitter(game.width / 2, -100);
           break;
       }
+      this.starParticles1.createEmitter(game.width, -100);
+      this.starParticles2.createEmitter(0, -100);
+      this.starParticles3.createEmitter(0, game.height + 100);
+      this.starParticles4.createEmitter(game.width , game.height +100);
+
+      this.flawParticles1.createEmitter(game.width, -100,0.5);
+      this.flawParticles2.createEmitter(0, -100,0.5);
+      this.flawParticles3.createEmitter(0, game.height + 100,0.5);
+      this.flawParticles4.createEmitter(game.width , game.height +100,0.5);
       this.add(this.cloud);
       this.add(this.flawless);
 
