@@ -85,6 +85,7 @@ export default class PlayerEndScore extends Phaser.Group {
             y: 100 + Math.random() * (game.height / 2 - 200),
             anchorX: 0.5,
             anchorY: 0.5,
+            randomAngle: true
           });
           console.log("TEST 1 " + i, maxIndex)
           console.log("TEST 2 " + j, this.info.scoreList[maxIndex] - 1)

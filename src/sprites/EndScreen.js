@@ -58,7 +58,7 @@ export default class EndScreen extends Phaser.Group {
 
   doAnimation () {
     game.world.bringToTop(this)
-    game.add.tween(this.scale).to({ x: 2, y: 2}, 1000, Phaser.Easing.Cubic.Out, true);
+    game.add.tween(this.scale).to({ x: 2, y: 2}, 1000, Phaser.Easing.Cubic.InOut, true);
     setTimeout(() => {
 
       this.flawless = new Sprite({

@@ -5,7 +5,7 @@ const dragCoefficient = 4000;
 const amplitude = 40;
 
 export default class Ball extends Sprite {
-  constructor({ asset, x, y, frame, anchorX = 0, anchorY = 0, inputEnabled = true }) {
+  constructor({ asset, x, y, frame, anchorX = 0, anchorY = 0, inputEnabled = true, randomAngle = false }) {
     super({ asset, x, y, frame, anchorX, anchorY, inputEnabled});
     this.pop = game.add.audio('pop');
     this.spawn = game.add.audio('spawn');
@@ -25,8 +25,11 @@ export default class Ball extends Sprite {
     ];
 
     this.spawn.play();
-
-    this.angle = Phaser.Point.angle(this.position, new Phaser.Point(game.width / 2, game.height / 2)) * 180 / Math.PI - 90;
+    if (randomAngle) {
+      this.angle = Math.random() * 360;
+    } else {
+      this.angle = Phaser.Point.angle(this.position, new Phaser.Point(game.width / 2, game.height / 2)) * 180 / Math.PI - 90;
+    }
 
     this.events.onDragStop.add(this.stopDrag.bind(this));
     this.scale.setTo(0);
