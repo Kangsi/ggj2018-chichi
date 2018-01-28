@@ -97,11 +97,13 @@ export default class extends Phaser.State {
     this.load.audio('slide', 'assets/sounds/slide.mp3');
     this.load.audio('boom', 'assets/sounds/boom.mp3');
     this.load.audio('inflate', 'assets/sounds/inflate.wav');
+    this.load.audio('bgSoundMainmenu', 'assets/sounds/bgSoundMainmenu1.mp3');
   }
 
   create () {
     //
-
+    let bgSound = game.add.audio('bgSoundMainmenu');
+    bgSound.play();
     this.loaderBg.visible = false;
     this.loaderBar.visible = false;
 
@@ -122,6 +124,7 @@ export default class extends Phaser.State {
 
     this.bg.inputEnabled = true;
     this.bg.events.onInputUp.add(() => {
+      bgSound.stop();
       this.state.start('TapToJoin');
     })
     this.game.add.existing(this.text);
