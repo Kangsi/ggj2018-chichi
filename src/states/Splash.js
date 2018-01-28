@@ -100,10 +100,12 @@ export default class extends Phaser.State {
     this.load.audio('boom', 'assets/sounds/boom.mp3');
     this.load.audio('inflate', 'assets/sounds/inflate.wav');
     this.load.audio('bgSoundMainmenu', 'assets/sounds/bgSoundMainmenu1.mp3');
+    this.load.audio('stop', 'assets/sounds/stopinjapanese.mp3');
+    this.load.audio('go', 'assets/sounds/horn.mp3');
+    this.load.audio('hooray', 'assets/sounds/hooray.mp3');
   }
 
   create () {
-    //
     let bgSound = game.add.audio('bgSoundMainmenu');
     bgSound.play();
     this.loaderBg.visible = false;

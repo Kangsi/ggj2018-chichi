@@ -54,6 +54,12 @@ export default class PlayerEndScore extends Phaser.Group {
     tween.onComplete.add(()=>{
       let boom = game.add.audio('boom');
       boom.play();
+      if (placement === 1) {
+        setTimeout(() => {
+        let hooray = game.add.audio('hooray');
+        hooray.play();
+        }, 250);
+      }
     });
   }
 

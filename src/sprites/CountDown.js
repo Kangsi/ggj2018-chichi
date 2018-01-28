@@ -55,6 +55,8 @@ export default class Questions extends Phaser.Group {
     this.tween2.start();
 
     if (this.seconds === 0) {
+      let snd = game.add.audio('go');
+      snd.play();
       this.game.startGameTimer.dispatch();
       setTimeout(() => {
         this.timer.visible = false;

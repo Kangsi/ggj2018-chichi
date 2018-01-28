@@ -48,6 +48,8 @@ export default class GameTimer extends Phaser.Group {
 
     }
     if (this.time === 0) {
+      let snd = game.add.audio('stop');
+      snd.play();
       setTimeout(() => {
         this.timer.visible = false;
         game.endRound.dispatch();
