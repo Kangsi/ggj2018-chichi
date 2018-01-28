@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import Text from '../services/Text';
 import Config from '../config';
 
-const duration = 750;
+const duration = 1250;
 
 export default class Questions extends Phaser.Group {
   constructor (game, question) {
@@ -35,8 +35,11 @@ export default class Questions extends Phaser.Group {
     // this.question1.setShadow(0, 5, '#cb4f7e')
     this.question1.scale.setTo(1);
 
-
-    const tween = game.add.tween(this.scale).to({ x: 1, y: 1 }, duration, Phaser.Easing.Quintic.In, true, 500);
+    let inflate = game.add.audio('inflate');
+    setTimeout(() => {
+      inflate.play();
+    }, 50);
+    const tween = game.add.tween(this.scale).to({ x: 1, y: 1 }, duration, Phaser.Easing.Quintic.In, true, 50);
     tween.onComplete.add(() => {
       setTimeout(() => {
         game.startCountDown.dispatch();

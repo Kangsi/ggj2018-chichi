@@ -35,6 +35,7 @@ export default class Flaws {
 
   reset () {
     this.step = 0;
+    this.isAsked = [];
   }
 
   checkIfDone () {

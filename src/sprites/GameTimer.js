@@ -53,5 +53,4 @@ export default class GameTimer extends Phaser.Group {
       this.game.toggleOverlay.dispatch(true);
     }
   }
-
 }

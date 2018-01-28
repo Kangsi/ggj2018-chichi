@@ -7,7 +7,9 @@ const amplitude = 40;
 export default class Ball extends Sprite {
   constructor({ asset, x, y, frame, anchorX = 0, anchorY = 0, inputEnabled = true }) {
     super({ asset, x, y, frame, anchorX, anchorY, inputEnabled});
-
+    this.pop = game.add.audio('pop');
+    this.spawn = game.add.audio('spawn');
+    this.slide = game.add.audio('slide');
     game.physics.arcade.enable(this);
     this.body.collideWorldBounds = true;
     this.body.angularDrag = 200;
@@ -22,8 +24,7 @@ export default class Ball extends Sprite {
       {x: 0, y: 0}
     ];
 
-
-
+    this.spawn.play();
 
     this.angle = Phaser.Point.angle(this.position, new Phaser.Point(game.width / 2, game.height / 2)) * 180 / Math.PI - 90;
 
@@ -45,6 +46,15 @@ export default class Ball extends Sprite {
 
   stopDrag () {
     this.body.velocity = this.calculateVelocity();
+    let xSpeed = Math.abs(this.body.velocity.x);
+    let ySpeed = Math.abs(this.body.velocity.y);
+    let threshold = 1000;
+    console.log('xSpeed = ' + xSpeed);
+    console.log('ySpeed = ' + ySpeed);
+    if (xSpeed > threshold || ySpeed > threshold) {
+
+      this.slide.play();
+    }
   }
 
   calculateVelocity () {
@@ -67,7 +77,10 @@ export default class Ball extends Sprite {
     plop.anchor.setTo(0.5, 0.5);
     const plopTween = this.game.add.tween(plop.scale).to({x: 1, y: 1}, 100);
     const plopTween2 = this.game.add.tween(plop).to({alpha: 0}, 100);
-
+    plopTween.onComplete.add(() => {
+      this.pop.volume = 4;
+      this.pop.play();
+    });
     tween.chain(plopTween, plopTween2);
     tween.onComplete.add(() => {
       game.playerScore[playerID] += 1;
