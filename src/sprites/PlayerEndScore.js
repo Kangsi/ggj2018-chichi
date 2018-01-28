@@ -4,15 +4,12 @@ import Ball from '../sprites/Ball';
 export default class PlayerEndScore extends Phaser.Group {
   constructor(game, id, x = 0, y = 0, info, placement) {
     super(game);
-
     this.x = x;
     this.y = y;
     this.info = info;
-
+    this.id = id;
+    this.placement = placement;
     this.buildBalls();
-    setTimeout(() => {
-      this.buildText(placement, id);
-    }, 400);
   }
 
   getPlacement (placement) {
@@ -29,6 +26,7 @@ export default class PlayerEndScore extends Phaser.Group {
   }
 
   buildText(placement, id) {
+    console.log(placement)
     this.timer = new Phaser.BitmapText(game, game.width / 4 - 100, game.height / 4 + 80, 'awesome-font', this.getPlacement(placement));
     this.timer.scale.setTo(20);
     this.timer.anchor.setTo(0.5, 0.5);
@@ -56,8 +54,26 @@ export default class PlayerEndScore extends Phaser.Group {
   }
 
   buildBalls() {
+    let maxIndex = 0;
+    for (let k = 0; k < this.info.scoreList.length; k += 1) {
+      if (this.info.scoreList[k] > 0) {
+        maxIndex = k;
+      }
+    }
+
+    if (maxIndex === 0 && this.info.scoreList[maxIndex] === 0) {
+      console.log("nothing")
+      console.log(this.placement)
+      this.buildText(this.placement, this.id);
+
+      game.showNextPerson.dispatch();
+      return;
+    }
+
+    console.log("max index " + maxIndex)
     for (let i = 0; i < this.info.scoreList.length; i += 1) {
       for (let j = 0; j < this.info.scoreList[i]; j += 1) {
+        const offset = 0;
         setTimeout(() => {
           const ball = new Ball({
             asset: this.info.itemList[i],
@@ -66,9 +82,18 @@ export default class PlayerEndScore extends Phaser.Group {
             anchorX: 0.5,
             anchorY: 0.5,
           });
+          console.log("TEST 1 " + i, maxIndex)
+          console.log("TEST 2 " + j, this.info.scoreList[maxIndex] - 1)
+          if (i === maxIndex && j === this.info.scoreList[maxIndex] - 1) {
 
+
+            setTimeout(() => {
+              this.buildText(this.placement, this.id);
+              game.showNextPerson.dispatch()
+            }, 400);
+          }
           this.add(ball);
-        }, i * 500 + j * 100);
+        }, i * (500 + this.info.scoreList[i] * 100) + j * 100);
       }
     }
   }

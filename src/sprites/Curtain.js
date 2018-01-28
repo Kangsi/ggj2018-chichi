@@ -44,14 +44,14 @@ export default class Curtain extends Phaser.Group {
 
     const rightCurtain = new Sprite({
       asset: 'curtain',
-      x: this.goIn ? game.width: game.width / 2 - offset * 2,
+      x: this.goIn ? game.width : game.width / 2 - offset * 1.1,
       anchorX: 1,
     });
 
     rightCurtain.scale.setTo(-1, 1);
 
     const tween2 = game.add.tween(rightCurtain).to({
-        x: this.goIn ? game.width / 2 - offset * 2 : game.width
+        x: this.goIn ? game.width / 2 - offset * 1.1 : game.width
       },
       2000,
       this.goIn ? Phaser.Easing.Cubic.Out : Phaser.Easing.Cubic.In)
@@ -63,7 +63,7 @@ export default class Curtain extends Phaser.Group {
     this.add(rightCurtain);
   }
 
-  buildText () {
+  buildText() {
     this.results1 = new Sprite({
       asset: 'results',
       x: game.width / 2,
@@ -71,7 +71,7 @@ export default class Curtain extends Phaser.Group {
       anchorX: 0.5,
       anchorY: 0.5,
     });
-    game.add.tween(this.results1).to({ y: game.height * 2 / 3 }, 2000, Phaser.Easing.Quintic.InOut, true, 0, 0, true);
+    game.add.tween(this.results1).to({y: game.height * 2 / 3}, 2000, Phaser.Easing.Quintic.InOut, true, 0, 0, true);
     this.add(this.results1);
 
     this.results2 = new Sprite({
@@ -81,8 +81,7 @@ export default class Curtain extends Phaser.Group {
       anchorX: 0.5,
       anchorY: 0.5,
     });
-this.game.add.tween(this.results2).to()
-    game.add.tween(this.results2).to({ y: game.height * 1 / 3 }, 2000, Phaser.Easing.Quintic.InOut, true, 0, 0, true);
+    game.add.tween(this.results2).to({y: game.height * 1 / 3}, 2000, Phaser.Easing.Quintic.InOut, true, 0, 0, true);
 
     this.results2.angle = 180;
 

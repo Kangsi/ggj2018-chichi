@@ -4,12 +4,19 @@ import Player from '../services/Player';
 import Flaws from '../services/Flaws';
 import ParticleSystem from '../sprites/ParticleSystem';
 
+const imageList = [
+  { bg: 'yellowBg', ray: 'yellow-player-bg-rays' },
+  { bg: 'blueBg', ray: 'blue-player-bg-rays' },
+  { bg: 'greenBg', ray: 'green-player-bg-rays' },
+  { bg: 'orangeBg', ray: 'orange-player-bg-rays' },
+]
+
 export default class extends Phaser.State {
 
   init () {
     game.players = [];
     for (let i = 0; i < 4; i += 1) {
-      game.players.push(new Player(i));
+      game.players.push(new Player(i, imageList[i].bg, imageList[i].ray));
     }
     this.canStart = false;
 
@@ -48,14 +55,19 @@ export default class extends Phaser.State {
   }
 
   createAudio () {
+    if (this.game.sounds) {
+      for (let i = this.game.sounds.length - 1; i >= 0; i -= 1) {
+        this.game.sounds[i].destroy();
+      }
+    }
     this.bass = game.add.audio('drum');
     this.guitar = game.add.audio('guitar');
     this.melody = game.add.audio('melody');
-    this.sounds = [this.bass, this.guitar, this.melody];
-    for (let i = 0; i < this.sounds.length; i += 1) {
-      this.sounds[i].volume = 0;
-      this.sounds[i].loop = true;
-      this.sounds[i].play();
+    this.game.sounds = [this.bass, this.guitar, this.melody];
+    for (let i = 0; i < this.game.sounds.length; i += 1) {
+      this.game.sounds[i].volume = 0;
+      this.game.sounds[i].loop = true;
+      this.game.sounds[i].play();
     }
   }
   toggleAudio (id) {
@@ -67,21 +79,21 @@ export default class extends Phaser.State {
       switch (id) {
         case 0:
           console.log('play');
-          this.sounds[id].volume = amount;
+          this.game.sounds[id].volume = amount;
           break;
         case 1:
           console.log('play');
-          this.sounds[id].volume = amount;
+          this.game.sounds[id].volume = amount;
           break;
         case 2:
           console.log('play');
-          this.sounds[id].volume = amount;
+          this.game.sounds[id].volume = amount;
           break;
         case 3:
           console.log('play');
-          for(let i = 0; i <  this.sounds.length; i += 1){
-            if(this.sounds[i].volume > 0){
-              this.sounds[i].volume = 1;
+          for(let i = 0; i <  this.game.sounds.length; i += 1){
+            if(this.game.sounds[i].volume > 0){
+              this.game.sounds[i].volume = 1;
             }
           }
           break;
@@ -93,21 +105,21 @@ export default class extends Phaser.State {
       switch (id) {
         case 0:
           console.log('stop');
-          this.sounds[id].volume = 0;
+          this.game.sounds[id].volume = 0;
           break;
         case 1:
           console.log('play');
-          this.sounds[id].volume = 0;
+          this.game.sounds[id].volume = 0;
           break;
         case 2:
           console.log('play');
-          this.sounds[id].volume = 0;
+          this.game.sounds[id].volume = 0;
           break;
         case 3:
           console.log('play');
-          for(let i = 0; i <  this.sounds.length; i += 1){
-            if (this.sounds[i].volume > 0) {
-              this.sounds[i].volume = 0.5;
+          for(let i = 0; i <  this.game.sounds.length; i += 1){
+            if (this.game.sounds[i].volume > 0) {
+              this.game.sounds[i].volume = 0.5;
             }
           }
           break;
@@ -153,8 +165,8 @@ export default class extends Phaser.State {
   createBGs () {
     const bg = game.add.sprite(0, 0, 'bg');
 
-    bg.width = game.width;
-    bg.height = game.height;
+    bg.width = game.width / 2;
+    bg.height = game.height / 2;
 
     const player1Active = this.game.add.sprite(0, 0, 'yellowPlayer');
     const player2Active = this.game.add.sprite(this.game.width / 2, 0, 'bluePlayer');

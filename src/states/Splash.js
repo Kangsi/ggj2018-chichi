@@ -49,6 +49,15 @@ export default class extends Phaser.State {
     this.load.image('cross', 'assets/images/cross.png');
     this.load.image('star', 'assets/images/star.png');
 
+    this.load.image('orangeBg', 'assets/images/orange-bg.png');
+    this.load.image('greenBg', 'assets/images/green-bg.png');
+    this.load.image('blueBg', 'assets/images/blue-bg.png');
+    this.load.image('yellowBg', 'assets/images/yellow-bg.png');
+
+
+
+    this.load.image('flawless', 'assets/images/flawless.png');
+
     this.load.image('curtain', 'assets/images/curtain.png');
     this.load.image('results', 'assets/images/results.png');
     this.load.image('plop', 'assets/images/plop-particle.png');

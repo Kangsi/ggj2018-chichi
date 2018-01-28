@@ -1,9 +1,11 @@
 export default class Player {
-  constructor (id) {
+  constructor (id, imageKey, rayKey) {
     this.id = id;
     this.active = false;
     this.itemList = []; //image key
     this.scoreList = []; //amount of items collected
+    this.backgroundImage = imageKey;
+    this.rayImage = rayKey;
   }
 
   addScore (score, item) {
