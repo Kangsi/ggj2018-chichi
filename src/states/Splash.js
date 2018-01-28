@@ -9,7 +9,7 @@ export default class extends Phaser.State {
   preload () {
     this.bg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-bg')
     game.add.tween(this.bg).to({ rotation: Math.PI * 2 }, 5000, null, true, 0, -1)
-    this.cloud = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'flawless-cloud')
+    this.cloud = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'flawless-cloud-stars')
     this.flawless = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-text')
     centerGameObjects([this.cloud, this.flawless, this.bg])
 
@@ -75,6 +75,8 @@ export default class extends Phaser.State {
     this.load.image('curtain', 'assets/images/curtain.png');
     this.load.image('results', 'assets/images/results.png');
     this.load.image('plop', 'assets/images/plop-particle.png');
+    this.load.image('flawless-cloud', './assets/images/flawless-cloud.png');
+
 
     this.load.audio('drum', 'assets/sounds/drums.mp3');
     this.load.audio('guitar', 'assets/sounds/guitar.mp3');
@@ -93,7 +95,7 @@ export default class extends Phaser.State {
     this.text = new Text({
       text: 'Press to Start!',
       x: game.width / 2,
-      y: game.height * 4 / 5,
+      y: game.height * 10 / 11,
       anchorX: 0.5,
       anchorY: 0.5,
       fontWeight: 'bold',
@@ -107,8 +109,15 @@ export default class extends Phaser.State {
       this.state.start('TapToJoin');
     })
     this.game.add.existing(this.text);
+
+    this.game.time.events.loop(800, this.toggleVisibility, this);
+  }
+
+  toggleVisibility () {
+    this.text.visible = !this.text.visible;
   }
 
   update () {
+
   }
 }

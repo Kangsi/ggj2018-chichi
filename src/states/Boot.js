@@ -25,7 +25,8 @@ export default class extends Phaser.State {
     this.load.image('loaderBar', './assets/images/loader-bar.png');
     this.load.image('logo-bg', './assets/images/logo-bg.png');
     this.load.image('logo-text', './assets/images/logo-text.png');
-    this.load.image('flawless-cloud', './assets/images/flawless-cloud.png');
+    this.load.image('flawless-cloud-stars', './assets/images/flawless-cloud-stars.png');
+
   }
 
   render () {
