@@ -24,6 +24,13 @@ export default class extends Phaser.State {
     this.load.image('smile', 'assets/images/smile.png');
     this.load.image('hangry', 'assets/images/hangry.png');
     this.load.image('nose', 'assets/images/nose.png');
+    this.load.image('chin', 'assets/images/chins.png');
+    this.load.image('crybaby', 'assets/images/crybaby.png');
+    this.load.image('beer', 'assets/images/beer.png');
+    this.load.image('nerd', 'assets/images/nerd.png');
+    this.load.image('gamer', 'assets/images/gamer.png');
+    this.load.image('poop', 'assets/images/poop.png');
+    this.load.image('penis', 'assets/images/penis.png');
 
     this.load.image('question-bg', 'assets/images/question-bg.png');
 

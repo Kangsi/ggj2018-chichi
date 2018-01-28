@@ -4,6 +4,12 @@
     { "question": "Who has yellow teeth?", "image": "smile" },
     { "question": "Who is always hangry?", "image": "hangry" },
     { "question": "Who has the biggest nose?", "image": "nose" },
-    { "question": "Question 5", "image": "shoe" }
+    { "question": "Who has the most chins", "image": "chin" },
+    { "question": "Who always loses games", "image": "gamer" },
+    { "question": "Who cant handle alcohol", "image": "beer" },
+    { "question": "Who is the biggest nerd", "image": "nerd" },
+    { "question": "Who is the biggest crybaby", "image": "crybaby" },
+    { "question": "Who is the stinkiest", "image": "poop" },
+    { "question": "Who has the smallest penis", "image": "penis" }
   ]
 }

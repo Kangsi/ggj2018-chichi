@@ -5,6 +5,7 @@ export default class GameTimer extends Phaser.Group {
     super(game);
     this.time = time;
     this.game = game;
+    this.ending = true;
     this.game.startGameTimer.add(() => {
       setTimeout(() => {
         this.buildTimer();
@@ -38,7 +39,9 @@ export default class GameTimer extends Phaser.Group {
     // this.timer.scale.setTo(0);
 
     this.tween.start();
+    if (this.time <= 3) {
 
+    }
     if (this.time === 0) {
       setTimeout(() => {
         this.timer.visible = false;
@@ -47,4 +50,5 @@ export default class GameTimer extends Phaser.Group {
       this.game.toggleOverlay.dispatch(true);
     }
   }
+
 }
