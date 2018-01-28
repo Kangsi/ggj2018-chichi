@@ -2,13 +2,13 @@ import 'pixi'
 import 'p2'
 import Phaser from 'phaser'
 
-import BootState from './states/Boot'
-import SplashState from './states/Splash'
-import GameState from './states/Game'
-import TapToJoin from './states/TapToJoin'
+import BootState from './states/Boot';
+import SplashState from './states/Splash';
+import GameState from './states/Game';
+import TapToJoin from './states/TapToJoin';
 import ScoreState from './states/ScoreState';
 
-import config from './config'
+import config from './config';
 
 class Game extends Phaser.Game {
   constructor (config) {

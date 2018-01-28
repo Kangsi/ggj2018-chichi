@@ -131,6 +131,7 @@ export default class extends Phaser.State {
       }
     }
   }
+<<<<<<< HEAD
   clickedButton (image, id) {
     this.join1 = game.add.audio('join1');
     this.join2 = game.add.audio('join2');
@@ -138,6 +139,10 @@ export default class extends Phaser.State {
     let joinSound = [this.join1, this.join2, this.join3];
     let toPlay = Math.floor(Math.random() * joinSound.length);
     joinSound[toPlay].play();
+=======
+
+  clickedButton(image, id) {
+>>>>>>> origin/weikang
     if (image.alpha > 0.5) {
       game.players[id].setActive();
       image.alpha = 0.01;

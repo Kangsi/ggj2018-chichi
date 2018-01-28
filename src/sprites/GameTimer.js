@@ -28,9 +28,12 @@ export default class GameTimer extends Phaser.Group {
 
   setTime () {
     this.time -= 1;
+    if (this.time <= 3 && this.time > 0) {
+      this.game.lastThreeSeconds.dispatch();
+    }
     this.timer.text = this.time > 0 ? this.time : 's';
 
-    if (this.time <= 0){
+    if (this.time <= 0) {
       game.world.bringToTop(this);
     }
     if (this.time < 0) {
