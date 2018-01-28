@@ -8,6 +8,7 @@ import PlayersScore from '../sprites/PlayersScore';
 import CreateBG from '../sprites/CreateBG';
 import Overlay from '../services/Overlay';
 import Curtain from '../sprites/Curtain';
+import RedGlow from '../sprites/RedGlow';
 
 export default class extends Phaser.State {
   init () {
@@ -22,6 +23,7 @@ export default class extends Phaser.State {
     this.game.toggleOverlay = new Phaser.Signal();
     this.game.time.desiredFps = 60;
     this.game.showCurtain = new Phaser.Signal();
+    this.game.lastThreeSeconds = new Phaser.Signal();
 
     this.flaw = game.flaws.getFlaw();
   }
@@ -46,6 +48,7 @@ export default class extends Phaser.State {
     });
     this.createBG = new CreateBG(game);
     this.cross = this.game.add.sprite(0, 0, 'cross');
+    this.redGlow = new RedGlow(game)
     this.cross.width = game.width;
     this.cross.height = game.height;
 
