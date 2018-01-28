@@ -33,7 +33,7 @@ export default class GameTimer extends Phaser.Group {
     }
     this.timer.text = this.time > 0 ? this.time : 's';
 
-    if (this.time <= 0){
+    if (this.time <= 0) {
       game.world.bringToTop(this);
     }
     if (this.time < 0) {

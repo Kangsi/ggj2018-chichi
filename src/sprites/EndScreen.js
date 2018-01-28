@@ -118,7 +118,7 @@ export default class EndScreen extends Phaser.Group {
       game.add.tween(this.flawless.scale).to({ x: 0.5, y: 0.5}, 500, null, true);
 
       this.flawless.events.onInputUp.add(() => {
-        game.state.start('TapToJoin')
+        game.state.start('Splash');
       })
     }, 1000)
 

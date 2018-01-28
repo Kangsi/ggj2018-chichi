@@ -1,16 +1,20 @@
 import Phaser from 'phaser';
+import Text from '../services/Text';
 import { centerGameObjects } from '../utils';
 
 export default class extends Phaser.State {
   init () {
-    for (let i = 0; i < 8; i += 1) {
-      game.input.addPointer();
-    }
   }
 
   preload () {
-    this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg')
-    this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar')
+    this.bg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-bg')
+    game.add.tween(this.bg).to({ rotation: Math.PI * 2 }, 5000, null, true, 0, -1)
+    this.cloud = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'flawless-cloud')
+    this.flawless = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-text')
+    centerGameObjects([this.cloud, this.flawless, this.bg])
+
+    this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.height * 4 / 5, 'loaderBg')
+    this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.height * 4 / 5, 'loaderBar')
     centerGameObjects([this.loaderBg, this.loaderBar])
 
     this.load.setPreloadSprite(this.loaderBar)
@@ -61,7 +65,6 @@ export default class extends Phaser.State {
     this.load.image('blueBg', 'assets/images/blue-bg.png');
     this.load.image('yellowBg', 'assets/images/yellow-bg.png');
 
-
     this.load.image('danger', 'assets/images/danger.png');
     this.load.image('flawless', 'assets/images/flawless.png');
 
@@ -75,11 +78,33 @@ export default class extends Phaser.State {
   }
 
   create () {
-    this.state.start('TapToJoin');
+    //
 
-
+    this.loaderBg.visible = false;
+    this.loaderBar.visible = false;
 
     this.load.image('shoe', 'assets/images/shoe.png');
     this.load.image('mushroom', 'assets/images/mushroom2.png');
+
+    this.text = new Text({
+      text: 'Press to Start!',
+      x: game.width / 2,
+      y: game.height * 4 / 5,
+      anchorX: 0.5,
+      anchorY: 0.5,
+      fontWeight: 'bold',
+      fontSize: 40,
+      stroke: '#fff',
+      strokeThickness: 16
+    });
+
+    this.bg.inputEnabled = true;
+    this.bg.events.onInputUp.add(() => {
+      this.state.start('TapToJoin');
+    })
+    this.game.add.existing(this.text);
+  }
+
+  update () {
   }
 }

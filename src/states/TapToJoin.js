@@ -5,14 +5,13 @@ import Flaws from '../services/Flaws';
 import ParticleSystem from '../sprites/ParticleSystem';
 
 const imageList = [
-  { bg: 'yellowBg', ray: 'yellow-player-bg-rays' },
-  { bg: 'blueBg', ray: 'blue-player-bg-rays' },
-  { bg: 'greenBg', ray: 'green-player-bg-rays' },
-  { bg: 'orangeBg', ray: 'orange-player-bg-rays' },
+  {bg: 'yellowBg', ray: 'yellow-player-bg-rays'},
+  {bg: 'blueBg', ray: 'blue-player-bg-rays'},
+  {bg: 'greenBg', ray: 'green-player-bg-rays'},
+  {bg: 'orangeBg', ray: 'orange-player-bg-rays'},
 ]
 
 export default class extends Phaser.State {
-
   init () {
     game.players = [];
     for (let i = 0; i < 4; i += 1) {
@@ -32,12 +31,13 @@ export default class extends Phaser.State {
   preload() {
 
   }
+
   create() {
     // background
     this.createBGs();
 
     // playerRays
-    this.createRays(500, 0.1);
+    this.createRays(492, 0.1);
 
     // playerbuttons
     this.createJoinButtons();
@@ -54,7 +54,7 @@ export default class extends Phaser.State {
     game.state.start('Game');
   }
 
-  createAudio () {
+  createAudio() {
     if (this.game.sounds) {
       for (let i = this.game.sounds.length - 1; i >= 0; i -= 1) {
         this.game.sounds[i].destroy();
@@ -70,7 +70,8 @@ export default class extends Phaser.State {
       this.game.sounds[i].play();
     }
   }
-  toggleAudio (id) {
+
+  toggleAudio(id) {
     if (game.players[id].active) {
       let amount = 0.5;
       if (game.players[3].active) {
@@ -91,8 +92,8 @@ export default class extends Phaser.State {
           break;
         case 3:
           console.log('play');
-          for(let i = 0; i <  this.game.sounds.length; i += 1){
-            if(this.game.sounds[i].volume > 0){
+          for (let i = 0; i < this.game.sounds.length; i += 1) {
+            if (this.game.sounds[i].volume > 0) {
               this.game.sounds[i].volume = 1;
             }
           }
@@ -117,7 +118,7 @@ export default class extends Phaser.State {
           break;
         case 3:
           console.log('play');
-          for(let i = 0; i <  this.game.sounds.length; i += 1){
+          for (let i = 0; i < this.game.sounds.length; i += 1) {
             if (this.game.sounds[i].volume > 0) {
               this.game.sounds[i].volume = 0.5;
             }
@@ -128,7 +129,8 @@ export default class extends Phaser.State {
       }
     }
   }
-  clickedButton (image, id) {
+
+  clickedButton(image, id) {
     if (image.alpha > 0.5) {
       game.players[id].setActive();
       image.alpha = 0.01;
@@ -162,7 +164,7 @@ export default class extends Phaser.State {
     this.toggleAudio(id);
   }
 
-  createBGs () {
+  createBGs() {
     const bg = game.add.sprite(0, 0, 'bg');
 
     bg.width = game.width / 2;
@@ -181,7 +183,7 @@ export default class extends Phaser.State {
     ];
   }
 
-  createRays (pSpeed, pRotation) {
+  createRays(pSpeed, pRotation) {
     let animationSpeed = pSpeed;
     let rotation = pRotation;
 
@@ -290,7 +292,7 @@ export default class extends Phaser.State {
     }
   }
 
-  render () {
+  render() {
 
   }
 }
