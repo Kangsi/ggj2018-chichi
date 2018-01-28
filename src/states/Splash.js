@@ -4,13 +4,15 @@ import { centerGameObjects } from '../utils';
 
 export default class extends Phaser.State {
   init () {
+    this.counter = 0;
   }
 
   preload () {
     this.bg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-bg')
     game.add.tween(this.bg).to({ rotation: Math.PI * 2 }, 5000, null, true, 0, -1)
-    this.cloud = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'flawless-cloud-stars')
-    this.flawless = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo-text')
+    this.cloud = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 50, 'flawless-cloud-stars')
+    this.flawless = this.add.sprite(this.game.world.centerX, this.game.world.centerY - 50, 'logo-text')
+    game.add.tween(this.flawless.scale).to({ x: 1.2, y: 1.2 }, 300, null, true, 0, -1, true)
     centerGameObjects([this.cloud, this.flawless, this.bg])
 
     this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.height * 4 / 5, 'loaderBg')
@@ -114,10 +116,16 @@ export default class extends Phaser.State {
     this.game.add.existing(this.text);
 
     this.game.time.events.loop(800, this.toggleVisibility, this);
+    this.game.time.events.loop(1600, this.toggleText, this);
   }
 
   toggleVisibility () {
     this.text.visible = !this.text.visible;
+  }
+
+  toggleText () {
+    this.counter += 1
+    this.text.text = this.counter % 2 === 0 ? 'Press to Start!' : '1 Credit(s)';
   }
 
   update () {
