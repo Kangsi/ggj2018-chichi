@@ -4,7 +4,7 @@ export default class Text extends Phaser.Text {
   constructor ({
     text = '', x = 0, y = 0, anchorX = 0, anchorY = 0, fontSize = 20,
     fontName = 'ADAM.CG PRO', fontWeight = 'normal', color = '#000000',
-    visible = true, align = 'center', boundsAlignH = 'center', boundsAlignV = 'middle',
+    visible = true, align = 'center', boundsAlignH = 'center', boundsAlignV = 'bottom',
     stroke = '#FFFFFF', strokeThickness = 0, inputEnabled = false,
   }) {
     super(game, x, y, text);
