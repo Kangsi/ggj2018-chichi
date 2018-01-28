@@ -24,6 +24,7 @@ export default class extends Phaser.State {
     this.game.time.desiredFps = 60;
     this.game.showCurtain = new Phaser.Signal();
     this.game.lastThreeSeconds = new Phaser.Signal();
+    this.game.removePointers = new Phaser.Signal();
 
     this.flaw = game.flaws.getFlaw();
   }
@@ -38,6 +39,12 @@ export default class extends Phaser.State {
       this.pointers.push(pointer);
       this.checkInput();
     });
+
+    this.game.removePointers.add(() => {
+      for (let i = 0; i < this.pointers.length; i += 1) {
+        this.pointers[i].reset();
+      }
+    })
 
     this.game.input.onUp.add((pointer) => {
       const index = this.pointers.indexOf(pointer);
