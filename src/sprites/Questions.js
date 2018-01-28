@@ -24,9 +24,9 @@ export default class Questions extends Phaser.Group {
     this.question1 = new Text({
       text: question,
       x: 0,
-      y: Config.height * 1 / 12,
+      y: Config.height * 0.2 / 12,
       anchorX: 0.5,
-      anchorY: 0.5,
+      anchorY: 0,
       fontWeight: 'bold',
       fontSize: 36,
     });
@@ -46,9 +46,9 @@ export default class Questions extends Phaser.Group {
     this.question2 = new Text({
       text: question,
       x: 0,
-      y: Config.height * -1 / 12,
+      y: Config.height * -0.2 / 12,
       anchorX: 0.5,
-      anchorY: 0.5,
+      anchorY: 0,
       fontWeight: 'bold',
       fontSize: 36,
     });
