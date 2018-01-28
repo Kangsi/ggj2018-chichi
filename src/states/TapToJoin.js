@@ -37,17 +37,20 @@ export default class extends Phaser.State {
     this.createBGs();
 
     // playerRays
-    this.createRays(492, 0.1);
+    this.createRays(474.0, 0.1);
 
     // playerbuttons
     this.createJoinButtons();
 
     // playButtons
     this.createPlayButton();
-    this.createAudio();
+    setTimeout(() => {
+      this.createAudio();
+    }, 230);
   }
 
   update() {
+
   }
 
   clickedPlay() {
